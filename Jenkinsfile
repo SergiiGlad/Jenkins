@@ -20,7 +20,7 @@ node {
                for (int k = 0; k < files.size(); k++) {
                    def file = files[k]
                    if (file.path.equals("Jenkinsfile")  ) {
-                       echo "${files.size}"
+                       echo files.size
                        echo "Only Jenkinsfile changed"
                    }
                }
