@@ -26,10 +26,13 @@ node {
             }
     }
         
-        changeLogSets.items.entry.affectedFiles.each { file ->
-            if (file.path.equals("Jenkinsfile")) {
-                 echo 'Jenkinsfile has changed!!!'
-              }
+        changeLogSets.items.each { entry ->
+            .affectedFiles.each { file ->
+                entry.affectedFiles.any { file -> 
+                  if (file.path.equals("Jenkinsfile")) {
+                     echo 'Jenkinsfile has changed!!!'
+                  }
+                }
         }    
 
         
