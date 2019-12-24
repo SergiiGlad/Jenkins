@@ -32,8 +32,9 @@ node {
                   if (file.path.equals("Jenkinsfile")) {
                      echo 'Jenkinsfile has changed!!!'
                   }
-                }
-        }    
+                }        
+            }
+        }
 
         
         changeLogSets.each { gitChangeSetList ->
