@@ -7,7 +7,7 @@ node {
     
 
 
-        if  ( env.BRANCH_NAME ==~ /^v\d.\d.\d$/ ) {
+        if  ( env.BRANCH_NAME ==~ /^\d.\d.\d$/ ) {
               println "tag name"
               println env.BRANCH_NAME
            
