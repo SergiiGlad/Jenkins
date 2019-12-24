@@ -11,8 +11,16 @@ node {
        stage('inside') {
            echo "inside test"
        }
+        
+      
+
+
+        if  ( env.BRANCH_NAME ==~ /^v\d.\d.\d$/ ) {
+              println env.BRANCH_NAME
+        }  
+
+        
      def changeLogSets = currentBuild.changeSets
-           
         for (int i = 0; i < changeLogSets.size(); i++) {
            def entries = changeLogSets[i].items
            for (int j = 0; j < entries.length; j++) {
