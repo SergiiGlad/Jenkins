@@ -19,7 +19,7 @@ node {
                def files = new ArrayList(entries[j].affectedFiles)
                 println "affectedFiles"
                 println files[0].path
-                
+                println files.path
                              
                for (int k = 0; k < files.size(); k++) {
                    def file = files[k]
@@ -34,7 +34,7 @@ node {
     }
         
         changeLogSets.items.each { entry ->
-             entry.affectedFiles.any { file -> 
+             entry.affectedFiles.each { file -> 
                   if (file.path.equals("Jenkinsfile")) {
                      echo 'Jenkinsfile has changed!!!'
                   }
