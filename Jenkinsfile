@@ -54,8 +54,7 @@ node {
           }
         }
             
-    currentBuild.result = 'SUCCESS';  
-    return currentBuild.result        
+      
      
      // never echo because return above       
      echo "----END-------"        
