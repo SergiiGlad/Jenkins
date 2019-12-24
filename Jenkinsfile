@@ -19,7 +19,7 @@ node {
                def files = new ArrayList(entries[j].affectedFiles)
                for (int k = 0; k < files.size(); k++) {
                    def file = files[k]
-                   if (file.path.equals("Jenkinsfile")  ) {
+                   if (file.path.equals("Jenkinsfile")  && files.size() == 1 ) {
                        println files.size()
                        echo "Only Jenkinsfile changed"
                    }
