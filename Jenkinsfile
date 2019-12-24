@@ -55,7 +55,8 @@ node {
         }
      
         currentBuild.result = 'SUCCESS';  
-        echo currentBuild.result
+        echo " ${currentBuild.result} "
+        
         return currentBuild.result
       
      
