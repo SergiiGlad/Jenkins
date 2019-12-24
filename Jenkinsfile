@@ -57,7 +57,7 @@ node {
         currentBuild.result = 'SUCCESS';  
         echo " ${currentBuild.result} "
         
-        return currentBuild.result
+        return 'SUCCESS'
       
      
      // never echo because return above       
