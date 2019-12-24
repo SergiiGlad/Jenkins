@@ -16,8 +16,8 @@ node {
         for (int i = 0; i < changeLogSets.size(); i++) {
            def entries = changeLogSets[i].items
            for (int j = 0; j < entries.length; j++) {
-               println "affected"
-               def files = new ArrayList(entries[j].affectedFiles
+               def files = new ArrayList(entries[j].affectedFiles)
+                println "affected"
                for (int k = 0; k < files.size(); k++) {
                    def file = files[k]
                    println "file.path"
