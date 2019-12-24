@@ -18,12 +18,13 @@ node {
            for (int j = 0; j < entries.length; j++) {
                def files = new ArrayList(entries[j].affectedFiles)
                 println "affectedFiles"
-                println j
+                println files
+                
                              
                for (int k = 0; k < files.size(); k++) {
                    def file = files[k]
                    println k
-                   println file.path
+                   println file
                    if (file.path.equals("Jenkinsfile")  ) {
                        
                        echo "Only Jenkinsfile changed"
