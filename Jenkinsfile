@@ -19,7 +19,7 @@ node {
                def files = new ArrayList(entries[j].affectedFiles)
                for (int k = 0; k < files.size(); k++) {
                    def file = files[k]
-                   if (file.path.equals("production-release.txt")) {
+                   if (file.path.equals("Jenkinsfile") && files.size() == 1 ) {
                        return true
                    }
                }
@@ -55,7 +55,8 @@ node {
         }
      
         currentBuild.result = 'SUCCESS';  
-                  return currentBuild.result
+        echo currentBuild.result
+        return currentBuild.result
       
      
      // never echo because return above       
