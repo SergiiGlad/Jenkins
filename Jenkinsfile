@@ -33,9 +33,10 @@ node {
             }
     }
         def onlyOneFile = false
-        currentBuild.changeSets.any { changeSet ->  
+        currentBuild.changeSets.any { changeSet -> 
+        if ( changeSet.items.length == 1 ) { onlyOneFile = true }
         changeSet.items.each { entry ->
-            if ( entry.length == 1 ) { onlyOneFile = true }
+            
             entry.affectedFiles.each { file -> 
                 if (file.path.equals("Jenkinsfile") && onlyOneFile) {
                      echo 'ONLY Jenkinsfile has changed!!!'    
