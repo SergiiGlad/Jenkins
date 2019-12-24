@@ -1,0 +1,20 @@
+node {
+    
+    stage('test'){
+        
+    checkout scm
+       
+    
+
+
+        if  ( env.BRANCH_NAME ==~ /^v\d.\d.\d$/ ) {
+              println "tag name"
+              println env.BRANCH_NAME
+           
+        } 
+        
+        
+    }
+}    
+    
+        
