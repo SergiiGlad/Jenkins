@@ -19,8 +19,12 @@ node {
                def files = new ArrayList(entries[j].affectedFiles)
                for (int k = 0; k < files.size(); k++) {
                    def file = files[k]
+                   println "file.path"
+                   println files.size()
+                   println k
+                   println file.path
                    if (file.path.equals("Jenkinsfile")  ) {
-                       println files.size()
+                       
                        echo "Only Jenkinsfile changed"
                    }
                }
@@ -58,7 +62,7 @@ node {
         currentBuild.result = 'SUCCESS';  
         echo " ${currentBuild.result} "
         
-        return 0
+        return
       
      
      // never echo because return above       
