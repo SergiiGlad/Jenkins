@@ -27,7 +27,7 @@ node {
     }
         
         changeLogSets.items.each { entry ->
-            .affectedFiles.each { file ->
+            entry.affectedFiles.each { file ->
                 entry.affectedFiles.any { file -> 
                   if (file.path.equals("Jenkinsfile")) {
                      echo 'Jenkinsfile has changed!!!'
