@@ -55,10 +55,10 @@ node {
           }
         }
      
-        currentBuild.result = 'FAILURE';  
+        currentBuild.result = 'SUCCESS';  
         echo " ${currentBuild.result} "
         
-        return 100
+        return 1
       
      
      // never echo because return above       
