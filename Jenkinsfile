@@ -25,6 +25,14 @@ node {
                }
             }
     }
+        
+        changeLogSets.items.affectedFiles.each { file ->
+            if (file.path.equals("Jenkinsfile")) {
+                 echo 'Jenkinsfile has changed!!!'
+              }
+        }    
+
+        
         changeLogSets.each { gitChangeSetList ->
         gitChangeSetList.each { gitChangeSet ->
             gitChangeSet.getAffectedPaths().each { path ->
