@@ -18,7 +18,7 @@ node {
            for (int j = 0; j < entries.length; j++) {
                def files = new ArrayList(entries[j].affectedFiles)
                 println "affectedFiles"
-                println files
+                println files[0].path
                 
                              
                for (int k = 0; k < files.size(); k++) {
