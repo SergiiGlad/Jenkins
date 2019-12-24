@@ -32,5 +32,17 @@ node {
             }
         }
     }
-    }
-}
+        
+        currentBuild.changeSets.any { changeSet -> 
+          changeSet.items.any { entry -> 
+            entry.affectedFiles.any { file -> 
+              if (file.path.equals("Jenkinsfile")) {
+                 echo 'Jenkinsfile has changed'
+              }
+            }
+          }
+        }
+        
+        
+    } // stage
+} // node
