@@ -32,14 +32,28 @@ node {
                }
             }
     }
+        def onlyOneFile = false
+        currentBuild.changeSets.any { changeSet ->  
+        changeSet.items.each { entry ->
+            if ( entry.length == 1 ) { onlyOneFile = true }
+            entry.affectedFiles.each { file -> 
+                if (file.path.equals("Jenkinsfile") && onlyOneFile) {
+                     echo 'ONLY Jenkinsfile has changed!!!'    
+                }    
+            }
+         }
+        }    
         
-        changeLogSets.items.each { entry ->
+        currentBuild.changeSets.any { changeSet ->  
+        changeSet.items.each { entry ->
              entry.affectedFiles.each { file -> 
                   if (file.path.equals("Jenkinsfile")) {
                      echo 'Jenkinsfile has changed!!!'
                   }
              }        
          }
+        }    
+            
         
 
         
