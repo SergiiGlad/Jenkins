@@ -16,7 +16,9 @@ node {
         } 
         
         variable = 2
-        
+        sh"""
+            echo variable form sh: $variable
+        """
         echo "variable: $variable"
         
         
