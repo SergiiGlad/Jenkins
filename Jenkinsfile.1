@@ -1,3 +1,5 @@
+def variable = 1
+
 node {
     
     stage('test'){
@@ -12,6 +14,8 @@ node {
               println env.BRANCH_NAME
            
         } 
+        
+        echo "variable: $variable"
         
         
     }
