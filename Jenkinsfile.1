@@ -9,7 +9,7 @@ node {
        
     def repo = 'sergiiglad'
     
-    image = repo + ':' + env.BRANCH_NAME 
+    def image = repo + ':' + env.BRANCH_NAME 
     
     echo image
     
