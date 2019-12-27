@@ -1,5 +1,7 @@
 variable = 1
 
+def image 
+
 node {
     
     stage('test'){
@@ -8,7 +10,8 @@ node {
        
     def repo = 'sergiiglad'
     
-    def image = repo + ':' + env.BRANCH_NAME
+    
+    image = repo + ':' + env.BRANCH_NAME
     
     echo image
     
@@ -33,9 +36,11 @@ node {
         penv()
         
         
-    }
+    }//stage
+  } //node  
     
-    def penv() {
+    
+ def penv() {
         println "function"
         println image
         sh"""
