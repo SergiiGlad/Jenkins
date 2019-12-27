@@ -1,6 +1,6 @@
 variable = 1
 
-def image = repo + ':' + env.BRANCH_NAME 
+def image
 
 node {
     
@@ -10,8 +10,7 @@ node {
        
     def repo = 'sergiiglad'
     
-    
-    
+    image = repo + ':' + env.BRANCH_NAME 
     
     echo image
     
@@ -36,8 +35,6 @@ node {
         penv()
         
         
-    }//stage
-  } //node  
     
     
  def penv() {
@@ -47,6 +44,11 @@ node {
             echo "function penv"
             echo "$image"
          """   
-}    
+}   
+
+
+}//stage
+  } //node  
+    
     
         
