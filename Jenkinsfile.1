@@ -1,6 +1,6 @@
 variable = 1
 
-host = "example"
+def host = "example"
 
 node {
     
@@ -31,6 +31,8 @@ node {
             echo variable form sh: $variable
         """
         echo "variable: $variable"
+        
+        host = "example"
         
         penv()
         
