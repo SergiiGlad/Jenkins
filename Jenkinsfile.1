@@ -30,8 +30,17 @@ node {
         """
         echo "variable: $variable"
         
+        penv()
+        
         
     }
+    
+    def penv() {
+        println "function"
+        println image
+        sh"""
+            echo $image
+         """   
 }    
     
         
