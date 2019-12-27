@@ -41,9 +41,10 @@ node {
     
     
  def penv() {
-        println "function"
+        
         println image
         sh"""
+            echo "function penv"
             echo $image
          """   
 }    
