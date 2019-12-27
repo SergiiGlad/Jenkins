@@ -1,5 +1,6 @@
 variable = 1
 
+def host = "www.example.com"
 
 node {
     
@@ -45,6 +46,7 @@ node {
         sh"""
             echo "function penv"
             echo $image
+            echo $host
          """   
 }   
 
