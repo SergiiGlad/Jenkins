@@ -6,6 +6,11 @@ node {
         
     checkout scm
        
+    def repo = 'sergiiglad'
+    
+    def image = repo + ':' + env.BRANCH_NAME
+    
+    println image
     
 
 
