@@ -9,7 +9,7 @@ node {
        
     def repo = 'sergiiglad'
     
-    def image = repo + ':' + env.BRANCH_NAME 
+    image = repo + ':' + env.BRANCH_NAME 
     
     echo image
     
@@ -44,7 +44,7 @@ node {
         println image
         sh"""
             echo "function penv"
-            echo "$image"
+            echo $image
          """   
 }   
 
