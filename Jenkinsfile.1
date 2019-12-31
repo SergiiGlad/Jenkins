@@ -17,13 +17,15 @@ node {
     
     println image
     
-    println myVariables.host
+    //println myVariables.host
+    
+    log.info "info"
 
-        if  ( env.BRANCH_NAME ==~ /^\d.\d.\d$/ ) {
-              println "tag name"
-              println env.BRANCH_NAME
+    if  ( env.BRANCH_NAME ==~ /^\d.\d.\d$/ ) {
+         println "tag name"
+         println env.BRANCH_NAME
            
-        } 
+    } 
         
         variable = 2
         sh"""
