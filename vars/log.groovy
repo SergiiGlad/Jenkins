@@ -5,3 +5,5 @@ def info(message) {
 def warning(message) {
     echo "WARNING: ${message}"
 }
+
+def val = 1
