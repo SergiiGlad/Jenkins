@@ -6,4 +6,4 @@ def warning(message) {
     echo "WARNING: ${message}"
 }
 
-def val = 1
+val = 1
