@@ -17,7 +17,7 @@ node {
     
     println image
     
-
+    println myVariables.host
 
         if  ( env.BRANCH_NAME ==~ /^\d.\d.\d$/ ) {
               println "tag name"
@@ -46,7 +46,7 @@ node {
         sh"""
             echo "function penv"
             echo $image
-            echo $myVariables.host
+            
          """   
 }   
 
