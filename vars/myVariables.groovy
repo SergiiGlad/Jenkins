@@ -1,1 +1,1 @@
-def host = "from file"
+host = "from file"
