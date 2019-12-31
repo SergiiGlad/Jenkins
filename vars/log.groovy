@@ -6,4 +6,4 @@ def warning(message) {
     echo "WARNING: ${message}"
 }
 
-val = 1
+String val = "string"
