@@ -22,9 +22,13 @@ node {
     
     println "HOSTNAME"
     
+    log.info "info"
+    
+    println log.val
+    
     println myVariables.host
     
-    log.info "info"
+   
 
     if  ( env.BRANCH_NAME ==~ /^\d.\d.\d$/ ) {
          println "tag name"
