@@ -10,7 +10,7 @@ node {
         
     checkout scm
     
-    env.SHORT_GIT_COMMIT = "${env.GIT_COMMIT[0..10]}"
+    println "${env.GIT_COMMIT[0..10]}"
     
     echo env.SHORT_GIT_COMMIT
        
