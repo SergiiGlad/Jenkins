@@ -10,7 +10,7 @@ node {
         
     checkout scm
     
-    echo env
+    sh 'printenv | sort'
     
     println env.GIT_COMMIT
     
