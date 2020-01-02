@@ -5,5 +5,4 @@ def info(message) {
 def warning(message) {
     echo "WARNING: ${message}"
 }
-
-String val = "string"
+def val() { return "string" }
