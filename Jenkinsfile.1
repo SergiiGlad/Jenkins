@@ -9,6 +9,10 @@ node {
     stage('test'){
         
     checkout scm
+    
+    env.SHORT_GIT_COMMIT = "${env.GIT_COMMIT[0..10]}"
+    
+    echo env.SHORT_GIT_COMMIT
        
     def repo = 'sergiiglad'
     
