@@ -16,9 +16,18 @@ node {
      
    // sh 'printenv | sort'
     
-    scmVars.GIT_COMMIT
-        
-    env.SHORT_GIT_COMMIT=scmVars.GIT_COMMIT[0..7]
+    echo GIT_COMMIT scmVars.GIT_COMMIT
+    echo GIT_BRANCH scmVars.GIT_BRANCH
+    echo GIT_LOCAL_BRANCH scmVars.GIT_LOCAL_BRANCH
+    echo GIT_PREVIOUS_COMMIT scmVars.GIT_PREVIOUS_COMMIT
+    echo GIT_PREVIOUS_SUCCESSFUL_COMMIT scmVars.GIT_PREVIOUS_SUCCESSFUL_COMMIT
+    echo GIT_URL scmVars.GIT_URL
+    echo GIT_URL_N - scmVars.GIT_URL_N
+    echo GIT_AUTHOR_NAME scmVars.GIT_AUTHOR_NAME
+    echo GIT_COMMITTER_EMAIL scmVars.GIT_COMMITTER_EMAIL
+    
+     
+    env.SHORT_GIT_COMMIT=scmVars.GIT_COMMIT[0..6]
     
     println scmVars.GIT_COMMIT
     
