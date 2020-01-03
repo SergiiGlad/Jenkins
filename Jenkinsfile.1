@@ -13,7 +13,8 @@ node {
     
     
         
-    def scmVars = checkout([$class: 'GitSCM', branches: [[name: '*/master']]])
+    def scmVars = checkout([$class: 'GitSCM', branches: [[name: '*/master']],
+     userRemoteConfigs: [[url: '']]])
      
    // sh 'printenv | sort'
     
