@@ -66,17 +66,7 @@ node {
         }    
             
         
-
-        
-        changeLogSets.each { gitChangeSetList ->
-        gitChangeSetList.each { gitChangeSet ->
-            gitChangeSet.getAffectedPaths().each { path ->
-                if(path.tokenize("/").size() > 1) result.put(path.tokenize("/").first(), true)
-            }
-        }
-    }
-        
-        currentBuild.changeSets.any { changeSet -> 
+      currentBuild.changeSets.any { changeSet -> 
           changeSet.items.any { entry -> 
             entry.affectedFiles.any { file -> 
               if (file.path.equals("Jenkinsfile")) {
