@@ -15,7 +15,7 @@ node {
       
 
 
-        if  ( env.BRANCH_NAME ==~ /^v\d.\d.\d$/ ) {
+        if  ( env.BRANCH_NAME ==~ /^v\d{1}.\d{1}.\d{1}$/ ) {
               println env.BRANCH_NAME
             return
         }  
