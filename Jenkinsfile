@@ -1,8 +1,8 @@
 env.DOCKER_IMAGE_NAME = 'my image name'
 
 properties([
-    pipelineTriggers([
-      [$class: "GitHubPushTrigger"]
+    triggers([
+      upstream(upstreamProjects: "test_tag/master", threshold: hudson.model.Result.SUCCESS)
     ])
   ])
 
