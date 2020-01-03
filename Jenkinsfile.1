@@ -11,10 +11,19 @@ node {
     //checkout scm
     
            
-    def scmVars = checkout([$class: 'GitSCM', branches: [[name: '*/master']],
-     userRemoteConfigs: [[url: 'https://github.com/SergiiGlad/Jenkins.git']],
-     credentialsId: 'github_key'])
-     
+   // def scmVars = checkout([$class: 'GitSCM', branches: [[name: '*/master']],
+   //  userRemoteConfigs: [[url: 'https://github.com/SergiiGlad/Jenkins.git']],
+   //  credentialsId: 'github_key'])
+   
+   def scmVars = checkout([
+        $class: 'GitSCM',
+        branches: [[name:  stageParams.branch ]],
+        userRemoteConfigs: [[ url: stageParams.url ]]
+    ])  
+    
+    println "=======stageParams======"
+    println stageParams
+    
    // sh 'printenv | sort'
     
     echo "GIT_COMMIT $scmVars.GIT_COMMIT"
