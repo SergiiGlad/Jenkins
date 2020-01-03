@@ -10,6 +10,11 @@ node {
     
     //checkout scm
     
+    parameters {
+        string(name: 'BRANCH', defaultValue: '*/master', description: 'git branch')
+        string(name: 'URL', defaultValue: 'https://github.com/SergiiGlad/Jenkins.git', description: 'github url')
+    }
+    
            
    // def scmVars = checkout([$class: 'GitSCM', branches: [[name: '*/master']],
    //  userRemoteConfigs: [[url: 'https://github.com/SergiiGlad/Jenkins.git']],
@@ -20,8 +25,8 @@ node {
    
    def scmVars = checkout([
         $class: 'GitSCM',
-        branches: [[name:  params.branch ]],
-        userRemoteConfigs: [[ url: stageParams.url ]]
+        branches: [[name:  params.BRANCH ]],
+        userRemoteConfigs: [[ url: params.URL ]]
     ])  
     
     
