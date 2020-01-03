@@ -93,7 +93,8 @@ node {
         }
         
         stage('Deploy'){
-            build 'test_tag/master'
+            //build 'test_tag/master'
+          apply from: 'https://raw.githubusercontent.com/org-name/repo-name/master/subfolder/Jenkinsfile.1?token=${env.GITHUB_TOKEN}'
         }
      
         currentBuild.result = 'SUCCESS';  
