@@ -6,6 +6,10 @@ node {
     
     stage('test'){
     
+    currentBuild.upstreamBuilds?.each{ b ->
+        echo "Triggered by upstream project: ${b.getFullDisplayName()}"
+      }  
+    
     //checkout scm
     
  parameters([
