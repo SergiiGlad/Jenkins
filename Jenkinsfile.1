@@ -22,6 +22,8 @@ node {
    println "=======stageParams======"
    println params
    
+   println "currentBuild: $currentBuild"
+   
    def scmVars = checkout([
         $class: 'GitSCM',
         branches: [[name:  params.BRANCH ]],
