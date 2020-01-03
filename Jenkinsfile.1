@@ -11,8 +11,7 @@ node {
     checkout scm
         
     def scmVars = checkout([
-        $class: 'GitSCM',
-        ...
+        $class: 'GitSCM'       
       ])
     
    // sh 'printenv | sort'
