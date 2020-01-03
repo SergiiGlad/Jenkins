@@ -9,7 +9,7 @@ node {
     //checkout scm
     
  parameters([
-    string(name: 'BRANCH', defaultValue: '*/master', description: 'git branch'),
+    string(name: 'BRANCH', defaultValue: 'origin/master', description: 'git branch'),
     string(name: 'URL', defaultValue: 'https://github.com/SergiiGlad/Jenkins.git', description: 'github url')
        
     ])
