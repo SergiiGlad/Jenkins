@@ -7,8 +7,13 @@ variable = 1
 node {
     
     stage('test'){
-        
+    
     checkout scm
+        
+    def scmVars = checkout([
+        $class: 'GitSCM',
+        ...
+      ])
     
    // sh 'printenv | sort'
     
