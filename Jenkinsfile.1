@@ -15,14 +15,16 @@ node {
    //  userRemoteConfigs: [[url: 'https://github.com/SergiiGlad/Jenkins.git']],
    //  credentialsId: 'github_key'])
    
+   println "=======stageParams======"
+   println params
+   
    def scmVars = checkout([
         $class: 'GitSCM',
-        branches: [[name:  stageParams.branch ]],
+        branches: [[name:  params.branch ]],
         userRemoteConfigs: [[ url: stageParams.url ]]
     ])  
     
-    println "=======stageParams======"
-    println stageParams
+    
     
    // sh 'printenv | sort'
     
