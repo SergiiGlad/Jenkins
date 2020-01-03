@@ -93,7 +93,7 @@ node {
         }
         
         stage('Deploy'){
-            build job: 'test_tag/master'
+            build 'test_tag/master'
         }
      
         currentBuild.result = 'SUCCESS';  
