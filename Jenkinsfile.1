@@ -8,11 +8,11 @@ node {
     
     //checkout scm
     
- parameters([
+ parameters[
     string(name: 'BRANCH', defaultValue: '*/master', description: 'git branch'),
     string(name: 'URL', defaultValue: 'https://github.com/SergiiGlad/Jenkins.git', description: 'github url')
        
-    ])
+    ]
     
            
    // def scmVars = checkout([$class: 'GitSCM', branches: [[name: '*/master']],
