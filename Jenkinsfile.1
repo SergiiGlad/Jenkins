@@ -10,11 +10,9 @@ node {
     
     //checkout scm
     
-    
-    
-        
+           
     def scmVars = checkout([$class: 'GitSCM', branches: [[name: '*/master']],
-     userRemoteConfigs: [[url: '']]])
+     userRemoteConfigs: [[url: 'https://github.com/SergiiGlad/Jenkins.git']]])
      
    // sh 'printenv | sort'
     
