@@ -1,4 +1,10 @@
 env.DOCKER_IMAGE_NAME = 'my image name'
+
+triggers {
+  upstream(upstreamProjects: "test_tag/master, threshold: hudson.model.Result.SUCCESS)
+}
+
+
 node {
     
     stage('test'){
@@ -64,7 +70,8 @@ node {
              }        
          }
         }    
-            
+        
+                    
         
       currentBuild.changeSets.any { changeSet -> 
           changeSet.items.any { entry -> 
