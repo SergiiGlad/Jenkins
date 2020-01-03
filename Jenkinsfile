@@ -95,13 +95,13 @@ node {
         stage('Deploy'){
             //build 'test_tag/master'
           echo 'apply'
-         // apply from: 'https://raw.githubusercontent.com/SergiiGlad/Jenkins/master/Jenkinsfile.1?token=${env.GITHUB_TOKEN}'
+         apply from: 'https://raw.githubusercontent.com/SergiiGlad/Jenkins/master/Jenkinsfile.1?token=${env.GITHUB_TOKEN}'
         }
      
         currentBuild.result = 'SUCCESS';  
         echo " ${currentBuild.result} "
         
-        return
+        return 0
       
      
      // never echo because return above       
