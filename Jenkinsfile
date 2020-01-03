@@ -1,12 +1,5 @@
 env.DOCKER_IMAGE_NAME = 'my image name'
 
-properties([
-    triggeredBy([
-      upstream(upstreamProjects: "test_tag/master", threshold: hudson.model.Result.SUCCESS)
-    ])
-  ])
-
-
 
 node {
   
@@ -89,6 +82,10 @@ node {
               }
             }
           }
+        }
+        
+        stage('Deploy'){
+            build job: 'test_tag/master'
         }
      
         currentBuild.result = 'SUCCESS';  
