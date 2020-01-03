@@ -1,7 +1,7 @@
 env.DOCKER_IMAGE_NAME = 'my image name'
 
 properties([
-    triggers([
+    triggeredBy([
       upstream(upstreamProjects: "test_tag/master", threshold: hudson.model.Result.SUCCESS)
     ])
   ])
