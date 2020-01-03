@@ -1,11 +1,13 @@
 env.DOCKER_IMAGE_NAME = 'my image name'
 
-triggers {
-  upstream(upstreamProjects: "test_tag/master", threshold: hudson.model.Result.SUCCESS)
-}
 
 
 node {
+  
+  triggers {
+  upstream(upstreamProjects: "test_tag/master", threshold: hudson.model.Result.SUCCESS)
+}
+
     
     stage('test'){
         
