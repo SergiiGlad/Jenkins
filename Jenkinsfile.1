@@ -16,12 +16,14 @@ node {
      
    // sh 'printenv | sort'
     
-    env.GIT_COMMIT = scmVars.GIT_COMMIT
+    scmVars.GIT_COMMIT
+        
+    env.SHORT_GIT_COMMIT=scmVars.GIT_COMMIT[0..7]
     
-    println env.GIT_COMMIT
+    println scmVars.GIT_COMMIT
     
-    echo env.SHORT_GIT_COMMIT
-       
+    println env.SHORT_GIT_COMMIT
+    
     def repo = 'sergiiglad'
     
     image = repo + ':' + env.BRANCH_NAME 
