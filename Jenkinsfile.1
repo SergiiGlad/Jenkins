@@ -9,11 +9,12 @@ node {
     stage('test'){
     
     //checkout scm
-        
-    def scmVars = checkout([
-        $class: 'GitSCM'       
-      ])
     
+    
+    
+        
+    def scmVars = checkout([$class: 'GitSCM', branches: [[name: '*/master']]])
+     
    // sh 'printenv | sort'
     
     env.GIT_COMMIT = scmVars.GIT_COMMIT
