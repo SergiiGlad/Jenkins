@@ -23,14 +23,7 @@ node {
        echo "${DOCKER_IMAGE_NAME}"
        echo "${JENKINS_SECRET}"
        
-       stage('inside') {
-           echo "inside test"
-       }
-        
-      
-
-
-        if  ( env.BRANCH_NAME ==~ /^v\d{1}.\d{1}.\d{1}$/ ) {
+      if  ( env.BRANCH_NAME ==~ /^v\d{1}.\d{1}.\d{1}$/ ) {
               println env.BRANCH_NAME
             return
         }  
@@ -92,19 +85,18 @@ node {
           }
         }
 
-        currentBuild.result = 'SUCCESS'  
-        echo " ${currentBuild.result} "
-      
-      stage('Deploy') {
-      
-      }
-        
-        return 
-      
-     
-     // never echo because return above       
-     echo "----END-------"        
+         
         
         
     } // stage
+  
+   stage('Deploy') {
+      
+      }
+  
+   currentBuild.result = 'SUCCESS'  
+    echo " ${currentBuild.result} "
+  
+     // never echo because return above       
+     echo "----END-------"      
 } // node
