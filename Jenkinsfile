@@ -86,7 +86,7 @@ node {
           changeSet.items.any { entry -> 
             entry.affectedFiles.any { file -> 
               if (file.path.equals("Jenkinsfile")) {
-                 echo 'Jenkinsfile has changed'
+                 echo 'Jenkinsfile has changed!!!!'
               }
             }
           }
@@ -94,6 +94,10 @@ node {
 
         currentBuild.result = 'SUCCESS'  
         echo " ${currentBuild.result} "
+      
+      stage('Deploy') {
+      
+      }
         
         return 
       
