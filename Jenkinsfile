@@ -6,6 +6,12 @@ node {
  // triggers {
 //  upstream(upstreamProjects: "test_tag/master", threshold: hudson.model.Result.SUCCESS)
 //}
+  
+  pipelineTriggers {
+    
+    upstream(upstreamProjects: "apply", threshold: hudson.model.Result.SUCCESS)
+
+}
 
     
     stage('test'){
