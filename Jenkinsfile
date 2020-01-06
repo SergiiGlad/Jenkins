@@ -3,17 +3,7 @@ env.DOCKER_IMAGE_NAME = 'my image name'
 
 node {
   
- // triggers {
-//  upstream(upstreamProjects: "test_tag/master", threshold: hudson.model.Result.SUCCESS)
-//}
-  
-  pipelineTriggers {
-    
-    upstream(upstreamProjects: "apply", threshold: hudson.model.Result.SUCCESS)
-
-}
-
-    
+   
     stage('test'){
         
     checkout scm
