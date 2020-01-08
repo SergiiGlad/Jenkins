@@ -8,6 +8,8 @@ node {
         
     checkout scm
       
+      echo "COMMIT_HASH: ${COMMIT_HASH}"
+      
        // These should all be performed at the point where you've
        // checked out your sources on the agent. A 'git' executable
        // must be available.
