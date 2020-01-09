@@ -2,8 +2,7 @@ env.DOCKER_IMAGE_NAME = 'my image name'
 
 
 node {
-  
-   
+    
     stage('test'){
         
     checkout scm
