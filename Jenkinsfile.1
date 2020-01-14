@@ -88,8 +88,8 @@ node {
         """
         echo "variable: $variable"
         
-        
-        build job: 'Pipeline-groovy', wait: true, parameters: [string(name: 'targetEnvironment', value: 'stage')], propagate: false
+        // Call another pipeline
+        // build job: 'Pipeline-groovy', wait: true, parameters: [string(name: 'targetEnvironment', value: 'stage')], propagate: false
         
        
              
