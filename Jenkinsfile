@@ -23,6 +23,9 @@ node {
               println env.BRANCH_NAME
             return
         }  
+        
+      if ( isMaster() ) 
+            println "Master"
 
         
      def changeLogSets = currentBuild.changeSets
@@ -96,3 +99,9 @@ node {
      // never echo because return above       
      echo "----END-------"      
 } // node
+
+
+def isMaster() {
+    return (params.BRANCH_NAME == "master" )
+   
+}
