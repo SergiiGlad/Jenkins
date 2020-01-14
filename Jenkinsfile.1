@@ -71,6 +71,9 @@ node {
     
     println log.val()
     
+    if (isMaster() ) 
+        println "Master"
+    
      
 
     if  ( env.BRANCH_NAME ==~ /^\d.\d.\d$/ ) {
@@ -93,6 +96,12 @@ node {
 
 }//stage
   } //node  
+  
+  
+  def isMaster() {
+    return (env.BRANCH_NAME == "master" )
+   
+}
             
     
     
