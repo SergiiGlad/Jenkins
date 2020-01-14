@@ -18,14 +18,7 @@ node {
        
        echo "${DOCKER_IMAGE_NAME}"
        echo "${JENKINS_SECRET}"
-       
-      if  ( env.BRANCH_NAME ==~ /^v\d{1}.\d{1}.\d{1}$/ ) {
-              println env.BRANCH_NAME
-            return
-        }  
-        
-      if ( isMaster() ) 
-            println "Master"
+  
 
         
      def changeLogSets = currentBuild.changeSets
@@ -101,7 +94,3 @@ node {
 } // node
 
 
-def isMaster() {
-    return (params.BRANCH_NAME == "master" )
-   
-}
