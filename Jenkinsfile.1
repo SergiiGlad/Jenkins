@@ -71,7 +71,7 @@ node {
     
     println log.val()
     
-    if (isMaster() ) 
+    if (isMaster(env.BRANCH_NAME) ) 
         println "Master"
     
      
@@ -98,8 +98,8 @@ node {
   } //node  
   
   
-  def isMaster() {
-    return (env.BRANCH_NAME == "master" )
+  def isMaster(name) {
+    return ( name == "master" )
    
 }
             
