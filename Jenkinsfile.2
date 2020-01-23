@@ -3,5 +3,5 @@
 library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
 
 node{
-  sh 'echo $myVariables.host'
+  sh 'echo ${myVariables.host}'
 }
