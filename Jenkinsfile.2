@@ -10,5 +10,7 @@ node{
     }
 
 
-   sh 'git tag'
+      def listTags = sh(returnStdout: true, script: "git tag")
+
+      println listTags
 }
