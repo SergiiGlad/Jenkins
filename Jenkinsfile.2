@@ -8,13 +8,13 @@ node{
 
   stage('Clone sources') {
         git url: 'https://github.com/sergiiglad/web.git'
-        def getall = sh(returnStdout: true, script: 'git ls-remote -t -h')
+        def getall = sh(returnStdout: true, script: 'git tag')
 
         println getall
 
-        gettags = getall.readLines()
-                 .collect { it.split()[1].replaceAll('refs/heads/', '')  }
-                 .unique()
+        gettags = getall.readLines().unique()
+                
+
 
     }
 
