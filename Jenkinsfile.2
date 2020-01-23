@@ -2,6 +2,13 @@
 
 library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
 
+@groovy.transform.Field
+def host="localhost"
+
 node{
-  sh "echo ${myVariables.host}"
+  println getHost()
+}
+
+def getHost() {
+  return host
 }
