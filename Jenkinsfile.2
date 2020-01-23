@@ -4,7 +4,11 @@ library identifier: 'my-shared-library@master', retriever: modernSCM(github(repo
 
 
 node{
-   git url: 'https://github.com/sergiiglad/web.git'
+
+  stage('Clone sources') {
+        git url: 'https://github.com/sergiiglad/web.git'
+    }
+
 
    sh 'git tag'
 }
