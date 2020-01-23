@@ -2,14 +2,9 @@
 
 library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
 
-@groovy.transform.Field
-def host="localhost"
-
 
 node{
-  getHost()
-}
+   git url: 'https://github.com/sergiiglad/web.git'
 
-def getHost() {
-  println host
+   sh 'git tag'
 }
