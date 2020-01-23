@@ -1,6 +1,6 @@
 #!groovy
 
-library identifier: 'my-shared-library@master', retriever: modernSCM()
+library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
 
 node{
   sh 'hello'
