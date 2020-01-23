@@ -12,7 +12,7 @@ node{
 
         println getall
 
-        gettags = getall.text.readLines()
+        gettags = getall.readLines()
                  .collect { it.split()[1].replaceAll('refs/heads/', '')  }
                  .unique()
 
