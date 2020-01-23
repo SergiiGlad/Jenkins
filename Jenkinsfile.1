@@ -1,43 +1,43 @@
-@Library('my-shared-library@master') _
+#!groovy
 
 variable = 1
 
 node {
-    
+
     stage('test'){
-    
+
     currentBuild.upstreamBuilds?.each{ b ->
         echo "Triggered by upstream project: ${b.getFullDisplayName()}"
-      }  
-    
+      }
+
     //checkout scm
-    
+
  parameters([
     string(name: 'BRANCH', defaultValue: 'origin/master', description: 'git branch'),
     string(name: 'URL', defaultValue: 'https://github.com/SergiiGlad/Jenkins.git', description: 'github url')
-       
+
     ])
-    
-           
+
+
    // def scmVars = checkout([$class: 'GitSCM', branches: [[name: '*/master']],
    //  userRemoteConfigs: [[url: 'https://github.com/SergiiGlad/Jenkins.git']],
    //  credentialsId: 'github_key'])
-   
+
    println "=======stageParams======"
    println params
-   
+
    println "currentBuild: $currentBuild"
-   
+
    def scmVars = checkout([
         $class: 'GitSCM',
         branches: [[name:  params.BRANCH ]],
         userRemoteConfigs: [[ url: params.URL ]]
-    ])  
-    
-    
-    
+    ])
+
+
+
    // sh 'printenv | sort'
-    
+
     echo "GIT_COMMIT $scmVars.GIT_COMMIT"
     echo "GIT_BRANCH $scmVars.GIT_BRANCH"
     echo "GIT_LOCAL_BRANCH $scmVars.GIT_LOCAL_BRANCH"
@@ -47,77 +47,73 @@ node {
     echo "GIT_URL_N - $scmVars.GIT_URL_N"
     echo "GIT_AUTHOR_NAME $scmVars.GIT_AUTHOR_NAME"
     echo "GIT_COMMITTER_EMAIL $scmVars.GIT_COMMITTER_EMAIL"
-    
-     
+
+
     env.SHORT_GIT_COMMIT=scmVars.GIT_COMMIT[0..6]
-    
+
     println scmVars.GIT_COMMIT
-    
+
     println env.SHORT_GIT_COMMIT
-    
+
     def repo = 'sergiiglad'
-    
-    image = repo + ':' + env.BRANCH_NAME 
-    
+
+    image = repo + ':' + env.BRANCH_NAME
+
     echo image
-    
+
     sh "echo $image"
-    
+
     println image
-    
+
     println "HOSTNAME"
-    
+
     log.info "info"
-    
+
     println log.val()
-    
-    if (isMaster(env.BRANCH_NAME) ) 
+
+    if (isMaster(env.BRANCH_NAME) )
         println "Master"
-    
-     
+
+
 
     if  ( env.BRANCH_NAME ==~ /^\d.\d.\d$/ ) {
          println "tag name"
          println env.BRANCH_NAME
-           
-    } 
-        
+
+    }
+
         variable = 2
         sh"""
             echo variable form sh: $variable
         """
         echo "variable: $variable"
-        
+
         // Call another pipeline
         // build job: 'Pipeline-groovy', wait: true, parameters: [string(name: 'targetEnvironment', value: 'stage')], propagate: false
-        
-       
-             
+
+
+
 
 }//stage
-  } //node  
-  
-  
+  } //node
+
+
   def isMaster(name) {
     return ( name == "master" )
-   
+
 }
-            
-    
-    
+
+
+
  def penv() {
-        
+
         println image
         sh"""
             echo "function penv"
             echo $image
-        """   
-        
+        """
+
   stage('Cicle') {
-    
+
   }
 }
-
-
-    
-        

@@ -1,1 +1,2 @@
-host = "from file"
+@groovy.tarnsform.Field
+def host = "from file"
