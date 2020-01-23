@@ -2,8 +2,9 @@
 
 library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
 
+import groovy.transform.Field
+ {@code @Field} def host="localhost"
 
-host="localhost"
 
 node{
   println getHost()
