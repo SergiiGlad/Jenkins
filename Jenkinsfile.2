@@ -1,24 +1,14 @@
 #!groovy
 
-//library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
+library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
 
 
 
   node{
 
-    def gettags
 
-    sshagent(credentials: ['git_ssh']) {
-       env.GIT_SSH_COMMAND = "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-       gettags = sh(returnStdout: true, script: 'git ls-remote -t ssh://git@github.com/sergiiglad/web.git')
-       //sh 'git ls-remote -t ssh://git@github.com/sergiiglad/web.git'
 
-    }
-
-    def allTags = gettags.readLines()
-           .collect { it.split()[1].replaceAll('refs/tags/', '')  }
-
-    println allTags
+    println getListTags
 
 
 }
@@ -28,15 +18,4 @@ def getAllGitTags(){
   git url: 'https://github.com/sergiiglad/web.git'
   def getall = sh(returnStdout: true, script: 'git tag')
   return getall.readLines().unique()
-}
-
-def getRemote() {
-  def gettags
-  sshagent(credentials: ['git_ssh']) {
-     gettags = sh(returnStdout: true, script: 'git ls-remote -t ssh://git@github.com/sergiiglad/web.git')
-
-  }
-  return gettags.readLines()
-         .collect { it.split()[1].replaceAll('refs/tags/', '')  }
-
 }
