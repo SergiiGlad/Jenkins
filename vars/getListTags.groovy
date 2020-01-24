@@ -1,5 +1,5 @@
 #!groovy
-def call() {
+List call() {
   def gettags
 
   sshagent(credentials: ['git_ssh']) {
