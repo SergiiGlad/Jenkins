@@ -15,10 +15,10 @@
 
     }
 
-    gettags.readLines()
+    def allTags = gettags.readLines()
            .collect { it.split()[1].replaceAll('refs/tags/', '')  }
 
-    println gettags
+    println allTags
 
 
 }
