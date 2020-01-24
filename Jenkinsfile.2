@@ -1,13 +1,12 @@
 #!groovy
 
-library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
+//library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
 
-def gettags
 
-podTemplate(label: podLabel, containers: [
+podTemplate(label: label, containers: [
         containerTemplate(name: 'ssh-client', image: 'kroniak/ssh-client:3.6', ttyEnabled: true, command: 'cat')
 ]) {
-  node(podLabel) {
+  node(label) {
     container('ssh-client') {
       sshagent(credentials: ['git_ssh']) {
         env.GIT_SSH_COMMAND = "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
