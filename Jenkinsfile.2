@@ -10,9 +10,7 @@ library identifier: 'my-shared-library@master', retriever: modernSCM(github(repo
 
     def li =  getListTags()
 
-    println li
-
-    li.each { println it}
+    if ( '0.1.0' in li ) println '0.1.0'
 
 
 }
