@@ -7,7 +7,7 @@
   node{
 
 
-      getRemote()
+      println getRemote()
 
 }
 
@@ -21,8 +21,9 @@ def getAllGitTags(){
 def getRemote() {
   def gettags
   sshagent(credentials: ['git_ssh']) {
-    env.GIT_SSH_COMMAND = "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-    sh 'git ls-remote -t -h ssh://git@github.com/sergiiglad/web.git'
+     gettags = sh(returnStdout: true, script: 'git ls-remote -t ssh://git@github.com/sergiiglad/web.git')
   }
-  println gettags
+  return gettags.readLines()
+         .collect { it.split()[1].replaceAll('refs/tags/', '')  }
+
 }
