@@ -9,7 +9,7 @@
     def gettags
 
     sshagent(credentials: ['git_ssh']) {
-       gettags = ('git ls-remote -t ssh://git@github.com/sergiiglad/web.git').execute()
+       sh 'git ls-remote -t ssh://git@github.com/sergiiglad/web.git'
 
     }
     gettags.readLines()
