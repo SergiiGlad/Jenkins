@@ -7,12 +7,12 @@ podTemplate(label: "label", containers: [
         containerTemplate(name: 'ssh-client', image: 'kroniak/ssh-client:3.6', ttyEnabled: true, command: 'cat')
 ]) {
   node("label") {
-    container('ssh-client') {
+    //container('ssh-client') {
       sshagent(credentials: ['git_ssh']) {
         env.GIT_SSH_COMMAND = "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
         sh 'git ls-remote -t -h ssh://git@github.com/sergiiglad/web.git'
       }
-    }
+
   }
 }
 
