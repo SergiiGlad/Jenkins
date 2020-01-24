@@ -8,4 +8,4 @@ sshagent(credentials: ['git_ssh']) {
 }
 
 return gettags.readLines()
-       .collect { it.split()[1].replaceAll('refs/tags/', '')
+       .collect { it.split()[1].replaceAll('refs/tags/', '') }
