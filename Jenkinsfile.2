@@ -6,8 +6,17 @@
 
   node{
 
+    def gettags
 
-      println getRemote()
+    sshagent(credentials: ['git_ssh']) {
+       gettags = sh(returnStdout: true, script: 'git ls-remote -t ssh://git@github.com/sergiiglad/web.git')
+
+    }
+    gettags.readLines()
+           .collect { it.split()[1].replaceAll('refs/tags/', '')  }
+
+    println gettags
+
 
 }
 
@@ -22,6 +31,7 @@ def getRemote() {
   def gettags
   sshagent(credentials: ['git_ssh']) {
      gettags = sh(returnStdout: true, script: 'git ls-remote -t ssh://git@github.com/sergiiglad/web.git')
+
   }
   return gettags.readLines()
          .collect { it.split()[1].replaceAll('refs/tags/', '')  }
