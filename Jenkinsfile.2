@@ -17,3 +17,9 @@ def getAllGitTags(){
   def getall = sh(returnStdout: true, script: 'git tag')
   return getall.readLines().unique()
 }
+
+def getRemote() {
+  sshagent(credentials: ['github-ssh']) {
+    sh 'git ls-remote -t -h ssh://sergiiglad@github.com/sergiiglad/web.git master/*'
+  }
+}
