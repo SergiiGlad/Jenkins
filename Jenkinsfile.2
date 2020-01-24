@@ -8,7 +8,11 @@ library identifier: 'my-shared-library@master', retriever: modernSCM(github(repo
 
 
 
-    println getListTags
+    def li =  getListTags
+
+    println li
+    
+    li.each { println it}
 
 
 }
