@@ -6,17 +6,12 @@ def gettags
 
 node{
 
-  stage('Clone sources') {
-        git url: 'https://github.com/sergiiglad/web.git'
-        def getall = sh(returnStdout: true, script: 'git tag')
-
-        println getall
-
-        gettags = getall.readLines().unique()
-                
+      println getAllGitTags()
+}
 
 
-    }
-
-      println gettags
+def getAllGitTags(){
+  git url: 'https://github.com/sergiiglad/web.git'
+  def getall = sh(returnStdout: true, script: 'git tag')
+  return getall.readLines().unique()
 }
