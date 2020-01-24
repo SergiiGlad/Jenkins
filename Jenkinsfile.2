@@ -6,7 +6,9 @@ def gettags
 
 node{
 
-      println getAllGitTags()
+      def allGitTags getAllGitTags()
+
+      if ( '4.0.0 in allGitTags') println '4.0.0'
 }
 
 
