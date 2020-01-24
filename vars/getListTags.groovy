@@ -7,9 +7,6 @@ List call() {
      gettags = sh(returnStdout: true, script: 'git ls-remote -t ssh://git@github.com/sergiiglad/web.git')
   }
 
-  def ll = gettags.readLines()
+  return gettags.readLines()
          .collect { it.split()[1].replaceAll('refs/tags/', '') }
-  println ll
-
-  return ll
 }
