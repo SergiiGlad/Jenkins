@@ -23,6 +23,7 @@ def getAllGitTags(){
 def getRemote() {
   def gettags
   sshagent(credentials: ['github-ssh']) {
+    sh 'ls ~/.ssh'
     sh 'git ls-remote -t -h ssh://git@github.com/sergiiglad/web.git'
   }
   println gettags
