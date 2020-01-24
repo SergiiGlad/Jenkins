@@ -7,14 +7,15 @@ def gettags
 podTemplate(containers: [
         containerTemplate(name: 'ssh-client', image: 'kroniak/ssh-client:3.6', ttyEnabled: true, command: 'cat')
 ]) {
-node{
-  container('ssh-client') {
-    sshagent(credentials: ['git_ssh']) {
-      env.GIT_SSH_COMMAND = "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-      sh 'git ls-remote -t -h ssh://git@github.com/sergiiglad/web.git'
+  node{
+    container('ssh-client') {
+      sshagent(credentials: ['git_ssh']) {
+        env.GIT_SSH_COMMAND = "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+        sh 'git ls-remote -t -h ssh://git@github.com/sergiiglad/web.git'
+      }
     }
   }
-}
+}  
 
 
 def getAllGitTags(){
