@@ -2,6 +2,10 @@
 
 Jenkins is an automation tool written in Java with built-in plugins for continuous integration tasks. It is used to continuously build and test projects making it easier to integrate the changing codes to it.
 
+Jenkins takes care of the rest of the process of build, deployment, testing, and analysis by automating it.
+
+Provides great collaboration between development and operations team, making it into a single DevOps team
+
 https://opensource.com/article/18/8/devops-jenkins-2
 
 One of the key ideas of DevOps is infrastructure-as-code—having the infrastructure for your delivery/deployment pipeline expressed in code—just as the products that flow it.
