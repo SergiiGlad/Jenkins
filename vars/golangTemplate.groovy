@@ -1,4 +1,4 @@
-podTemplate=(
+podTemplate= { (
     cloud: 'kubernetes',
     namespace: 'jenkins',
     label: podLabel,
@@ -13,7 +13,8 @@ podTemplate=(
         image: 'docker:stable-dind',
         ttyEnabled: true,
         privileged: true)
-])
+    ])
+} 
 
 def call(String podLabel, Closure code)  { 
   podTemplate {
