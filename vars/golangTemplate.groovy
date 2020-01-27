@@ -12,7 +12,7 @@ def call(String podLabel, Closure code) { podTemplate(
         name: 'docker-dind',
         image: 'docker:stable-dind',
         ttyEnabled: true,
-        securityContext.privileged: 'true')
+        securityContext.privileged: true)
 ]) {
 code() }
 }
