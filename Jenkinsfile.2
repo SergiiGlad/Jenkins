@@ -7,8 +7,10 @@ def podLabel = "worker-${UUID.randomUUID()}"
 golangTemplate(podLabel) {
   node(podLabel){
 
-    def li =  getListTags()
-    if ( '0.1.0' in li ) println '0.1.0'
+    
+    container('docker-dind') {
+      sh 'docker info'
+    }
 
   }
 }
