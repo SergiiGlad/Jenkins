@@ -4,7 +4,7 @@ library identifier: 'my-shared-library@master', retriever: modernSCM(github(repo
 
 def podLabel = "worker-${UUID.randomUUID()}"
 
-dotnetTemplate(podLabel) {
+golangTemplate(podLabel) {
   node(podLabel){
 
     def li =  getListTags()
