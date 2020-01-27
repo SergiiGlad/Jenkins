@@ -1,7 +1,7 @@
-def call('docker', Closure code) { podTemplate(
+def call(Closure code) { podTemplate(
     cloud: 'kubernetes',
     namespace: 'jenkins',
-    label: podLabel,
+    label: 'worker-docker',
     containers: [
       containerTemplate(
         name: 'golang',
