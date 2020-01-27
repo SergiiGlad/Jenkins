@@ -2,14 +2,12 @@
 
 library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
 
+def podLabel = "worker-${UUID.randomUUID()}"
 
-
-  node{
-
-
+dotnetTemplate(podLabel) {
+  node(podLabel){
 
     def li =  getListTags()
-
     if ( '0.1.0' in li ) println '0.1.0'
 
 
