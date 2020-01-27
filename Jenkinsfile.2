@@ -2,7 +2,6 @@
 
 library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
 
-def podLabel = "worker-${UUID.randomUUID()}"
 
 golangTemplate(podLabel) {
   node(podLabel){
