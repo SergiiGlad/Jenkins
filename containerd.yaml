@@ -5,7 +5,7 @@ metadata:
 spec:
   restartPolicy: OnFailure
   containers:
-  - name: docker-build
+  - name: containerd
     image: gprasath/crictl:ci
     command: ['cat']
     tty: true

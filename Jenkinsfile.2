@@ -12,13 +12,6 @@ golangTemplate(podLabel) {
   }
 }
 
-dockerTemplate() {
-  node('worker-docker'){
-    container('docker-dood') {
-      sh 'docker info'
-    }
-  }
-}
 
 
 def getAllGitTags(){
