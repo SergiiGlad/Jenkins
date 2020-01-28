@@ -4,11 +4,11 @@ library identifier: 'my-shared-library@master', retriever: modernSCM(github(repo
 
 def podLabel = "worker-${UUID.randomUUID()}"
 
-kanikoTemplate(podLabel) {
+golangTemplate(podLabel) {
   node(podLabel){
-    container('kaniko') {
+    container('docker-dind') {
       withDockerRegistry([credentialsId: 'docker-api-key', url: 'https://index.docker.io/v1/']) {
-				sh 'pwd'
+				sh 'ls -al /home/jenkins/agent/workspace/'
         sh "find / -name config.json -exec cp '{}' ~ +" 	
         sh 'cat ~/config.json'
 			  sh '/kaniko/executor'
