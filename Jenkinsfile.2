@@ -11,8 +11,7 @@ golangTemplate(podLabel) {
 				sh 'ls -al /home/jenkins/agent/workspace/'
         sh "find / -name config.json -exec cp '{}' ~ +" 	
         sh 'cat ~/config.json'
-			  
-      }
+			}
     }
    
 
