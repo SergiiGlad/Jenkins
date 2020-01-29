@@ -14,7 +14,7 @@ def call(String podLabel, Closure code) { podTemplate(
         ttyEnabled: true,
         command: '/busybox/cat')],
     volumes: [
-      secretVolume(secretName: 'dockercred', mountPath: '/kaniko/.docker')
+      secretVolume(mountPath: '/kaniko/.docker', secretName: 'dockercred', defaultMode: '420')
     ]) {    
 code() }
 }
