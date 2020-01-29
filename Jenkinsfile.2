@@ -15,8 +15,10 @@ kanikoTemplate(podLabel) {
     }
 
     container('kaniko') {
-     
-			sh 'cat /home/jenkins/agent/config.json'
+      sh 'cat /home/jenkins/agent/config.json'
+      sh 'pwd'
+      sh '/home'
+      sh 'ls ~'
 		}
     
   }
