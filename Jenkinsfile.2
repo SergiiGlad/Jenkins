@@ -8,8 +8,8 @@ kanikoTemplate(podLabel) {
   node(podLabel){
 
     stage('Checkout application SCM') {
-			checkout scm
-		}
+			git url: 'https://github.com/sergiiglad/web.git'
+    }
 
 		stage('Build  Golang app') {
 			container('golang') {
