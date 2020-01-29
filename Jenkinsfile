@@ -5,7 +5,7 @@ node {
     
     stage('test'){
         
-    checkout scm
+    git url: 'https://github.com/sergiiglad/web.git'
       
         
        // These should all be performed at the point where you've
