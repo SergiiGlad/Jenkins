@@ -28,7 +28,7 @@ kanikoTemplate(podLabel) {
       }
 
       container('kaniko') {
-        sh '/kaniko/executor --context git://github.com/sergiiglad/web.git --destination=sergeyglad/wiki:3.0'
+        sh '/kaniko/executor --context . --destination=sergeyglad/wiki:3.0'
         
       }
     }  
