@@ -12,8 +12,8 @@ def call(String podLabel, Closure code) { podTemplate(
         name: 'kaniko',
         image: 'gcr.io/kaniko-project/executor:debug',
         ttyEnabled: true,
-        command: '/busybox/cat',
-        imagePullSecrets: ["dockercred"])
-    ]) {
+        command: '/busybox/cat')],
+    imagePullSecrets: [ 'dockercred'])
+    {
 code() }
 }
