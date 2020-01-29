@@ -15,7 +15,7 @@ kanikoTemplate(podLabel) {
     }
 
     container('kaniko') {
-      withDockerRegistry([credentialsId: 'docker-api-key', url: 'https://index.docker.io/v1/']) {
+     
 			  sh 'cat ~/config.json'
 			}
     }
