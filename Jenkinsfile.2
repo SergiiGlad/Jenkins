@@ -20,7 +20,7 @@ kanikoTemplate(podLabel) {
 
     stage('Docker login') { 
       container('kaniko') {
-        sh "ls /kaniko/.docker" 	
+        sh "ls" 	
         sh '/kaniko/executor --context . --destination=sergeyglad/wiki:3.0'
       }
     }  
