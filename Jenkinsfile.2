@@ -18,18 +18,9 @@ kanikoTemplate(podLabel) {
 			}
 		}
 
-    stage('Build container app') { 
-
-      container('docker-dind') {
-        withDockerRegistry([credentialsId: 'docker-api-key', url: 'https://index.docker.io/v1/']) {
-          sh "find / -name config.json -exec cp '{}' . +" 	
-          sh 'cat config.json'
-        }
-      }
-
+    stage('Docker login') { 
       container('kaniko') {
         sh '/kaniko/executor --context . --destination=sergeyglad/wiki:3.0'
-        
       }
     }  
     
