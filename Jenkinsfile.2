@@ -4,9 +4,9 @@ library identifier: 'my-shared-library@master', retriever: modernSCM(github(repo
 
 def podLabel = "worker-${UUID.randomUUID()}"
 
-golangTemplate(podLabel) {
+kanikoTemplate(podLabel) {
   node(podLabel){
-    container('docker-dind') {
+    container('kaniko') {
       withDockerRegistry([credentialsId: 'docker-api-key', url: 'https://index.docker.io/v1/']) {
 				sh 'ls -al /home/jenkins/agent/workspace/'
         sh "find / -name config.json -exec cp '{}' ~ +" 	
