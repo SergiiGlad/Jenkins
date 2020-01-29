@@ -10,9 +10,9 @@ def call(String podLabel, Closure code) { podTemplate(
         command: 'cat'),
       containerTemplate(
         name: 'kaniko',
-        image: 'gcr.io/kaniko-project/executor:latest',
+        image: 'gcr.io/kaniko-project/executor:debug',
         ttyEnabled: true,
-        command: 'cat')
+        command: '/busybox/cat')
     ]) {
 code() }
 }
