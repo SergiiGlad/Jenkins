@@ -9,14 +9,14 @@ kanikoTemplate(podLabel) {
 
     container('docker-dind') {
       withDockerRegistry([credentialsId: 'docker-api-key', url: 'https://index.docker.io/v1/']) {
-			  sh "find / -name config.json -exec cp '{}' ~ +" 	
-        sh 'cat ~/config.json'
+			  sh "find / -name config.json -exec cp '{}' /home/jenkins/agent +" 	
+        sh 'cat /home/jenkins/agent/config.json'
 			}
     }
 
     container('kaniko') {
      
-			sh 'cat ~/config.json'
+			sh 'cat /home/jenkins/agent/config.json'
 		}
     
   }
