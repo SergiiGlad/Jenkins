@@ -6,11 +6,17 @@ def podLabel = "worker-${UUID.randomUUID()}"
 
 kanikoTemplate(podLabel) {
   node(podLabel){
+
+    container('docker-dind') {
+      withDockerRegistry([credentialsId: 'docker-api-key', url: 'https://index.docker.io/v1/']) {
+			  sh "find / -name config.json -exec cp '{}' ~ +" 	
+        sh 'cat ~/config.json'
+			}
+    }
+
     container('kaniko') {
       withDockerRegistry([credentialsId: 'docker-api-key', url: 'https://index.docker.io/v1/']) {
-				sh 'ls -al /home/jenkins/agent/workspace/'
-        sh "find / -name config.json -exec cp '{}' ~ +" 	
-        sh 'cat ~/config.json'
+			  sh 'cat ~/config.json'
 			}
     }
   }
