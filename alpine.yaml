@@ -16,8 +16,6 @@ spec:
     - name: host-root
       mountPath: /home/root
       readOnly: false
-  imagePullSecrets:
-  - name: dockercred    
   volumes:
   - name: host-root
     hostPath:
