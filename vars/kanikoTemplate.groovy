@@ -14,7 +14,7 @@ def call(String podLabel, Closure code) { podTemplate(
         ttyEnabled: true,
         command: '/busybox/cat')],
     volumes: [
-      secretVolume(mountPath: '/home/jenkins/agent/workspace/Pipeline-groovy', secretName: 'dockercred')
+      secretVolume(mountPath: '/root/.docker', secretName: 'dockercred')
     ]) {    
 code() }
 }
