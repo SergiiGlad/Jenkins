@@ -20,6 +20,8 @@ kanikoTemplate(podLabel) {
 
     stage('Docker login') { 
       container('kaniko') {
+        sh "find / -name config.json -exec cp '{}' . +" 	
+        sh 'cat config.json'
         sh '/kaniko/executor --context . --destination=sergeyglad/wiki:3.0'
       }
     }  
