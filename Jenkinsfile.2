@@ -18,6 +18,8 @@ kanikoTemplate(podLabel) {
 			}
 		}
 
+    sh 'echo -n password | base64'
+
     stage('Docker login') { 
       container('kaniko') {
         sh '/kaniko/executor --context . --destination=sergeyglad/wiki:5.0'
