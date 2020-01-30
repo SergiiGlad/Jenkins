@@ -11,9 +11,9 @@ node{
 
   sh"""
     pr=[1,2,3,4]
-    for i in $pr
+    for i in \$pr
     do
-      echo ${i}:$parmas.CONFIGURATION
+      echo \${i}:$parmas.CONFIGURATION
     done
   """
 
