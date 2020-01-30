@@ -101,16 +101,7 @@ spec:
               path: config.json
 ```
 
-pods/private-reg-pod.yaml 
-apiVersion: v1
-kind: Pod
-metadata:
-  name: private-reg
-spec:
-  containers:
-  - name: private-reg-container
-    image: <your-private-image>
-  imagePullSecrets:
-  - name: regcred
+
+
 
 
