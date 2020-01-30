@@ -28,6 +28,8 @@ kanikoTemplate(podLabel) {
         writeFile file: "config.json", text: 
           '{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"' + CI_USER_PASSWORD + '\"}}}'
 
+        sh 'cat config.json'  
+
         
       }
    
