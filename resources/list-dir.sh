@@ -1,3 +1,3 @@
-find . -name *.yaml
-
 echo $CONFIGURATION
+
+return `find . -name *.yaml`
