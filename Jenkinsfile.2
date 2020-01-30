@@ -25,11 +25,8 @@ kanikoTemplate(podLabel) {
 
         def CI_USER_PASSWORD=sh(returnStdout: true, script: 'echo -n "${USERNAME}:${PASSWORD}" | base64 | tr -d "\n"')
 
-        def dockerConfig='{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"' + CI_USER_PASSWORD + '\"}}}'
-
-        println dockerConfig
-
-        writeFile file: "config.json", text: dockerConfig
+        writeFile file: "config.json", text: 
+          '{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"' + CI_USER_PASSWORD + '\"}}}'
 
         
       }
