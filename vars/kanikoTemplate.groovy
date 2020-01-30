@@ -12,9 +12,7 @@ def call(String podLabel, Closure code) { podTemplate(
         name: 'kaniko',
         image: 'gcr.io/kaniko-project/executor:debug',
         ttyEnabled: true,
-        command: '/busybox/cat')],
-    volumes: [
-      secretVolume(mountPath: '/kaniko/.docker', secretName: 'dockercred')
+        command: '/busybox/cat')
     ]) {    
 code() }
 }
