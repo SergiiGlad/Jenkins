@@ -11,6 +11,8 @@ properties([
 
 node{
 
+  git url: 'https://github.com/sergiiglad/web-delivery.git'
+
   sh"""
     pr=[1,2,3,4]
     for i in \$pr
