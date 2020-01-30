@@ -1,1 +1,1 @@
-ls
+find . -name *.yaml
