@@ -28,12 +28,16 @@ kanikoTemplate(podLabel) {
         writeFile file: "config.json", text: 
           '{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"' + CI_USER_PASSWORD + '\"}}}'
 
+        sh 'ls'  
+
         sh 'cat config.json'  
 
         
       }
    
       container('kaniko') {
+        sh 'ls'  
+        sh 'cat config.json' 
         sh '/kaniko/executor --context . --destination=sergeyglad/wiki:5.0'
       }
     }  
