@@ -19,7 +19,7 @@ kanikoTemplate(podLabel) {
 		}
 
     
-     stage('Docker login') { 
+     stage('Kaniko build') { 
       withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker-api-key',
         usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
 
@@ -27,7 +27,7 @@ kanikoTemplate(podLabel) {
       
         sh "echo $CI_USER_PASSWORD"
       
-        sh "echo \"{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$CI_USER_PASSWORD\"}}}\" > config.json"
+        sh "echo \"{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"${CI_USER_PASSWORD}\"}}}\" > config.json"
       }
    
       container('kaniko') {
