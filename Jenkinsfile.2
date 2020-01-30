@@ -28,7 +28,7 @@ kanikoTemplate(podLabel) {
         sh "echo $CI_USER_PASSWORD"
         //def dockerConf="{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"${CI_USER_PASSWORD}\"}}}"
         //sh "echo "$dockerConf" 
-        echo \"text\"
+       
         sh '\"text\"'
         sh "\"text\""
         sh "echo {\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"${CI_USER_PASSWORD}\"}}} > config.json"
