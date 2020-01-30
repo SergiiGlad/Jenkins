@@ -27,7 +27,7 @@ kanikoTemplate(podLabel) {
       
         println CI_USER_PASSWORD
       
-        echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$CI_USER_PASSWORD\"}}}" > /kaniko/.docker/config.json
+        sh 'echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$CI_USER_PASSWORD\"}}}" > /kaniko/.docker/config.json'
       }
    
       container('kaniko') {
