@@ -26,12 +26,11 @@ kanikoTemplate(podLabel) {
         def CI_USER_PASSWORD=sh(returnStdout: true, script: 'echo -n ${USERNAME}:${PASSWORD} | base64')
       
         sh "echo $CI_USER_PASSWORD"
-        //def dockerConf="{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"${CI_USER_PASSWORD}\"}}}"
-        //sh "echo "$dockerConf" 
-       
-        sh '\"text\"'
-        sh "\"text\""
-        sh "echo {\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"${CI_USER_PASSWORD}\"}}} > config.json"
+        def dockerConfig='{"auths":{"https://index.docker.io/v1/":{"auth":"' + ${CI_USER_PASSWORD} + '"}}}'
+        sh 'echo $dockerConfig'
+        sh 'echo $dockerConfig > config.json'
+        
+        
       }
    
       container('kaniko') {
