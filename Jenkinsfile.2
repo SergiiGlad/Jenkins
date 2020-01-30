@@ -18,17 +18,18 @@ kanikoTemplate(podLabel) {
 			}
 		}
 
-    sh 'echo -n password | base64'
-    println credentials( 'docker-api-key' )
-    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker-api-key',
-usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+    
+     stage('Docker login') { 
+      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker-api-key',
+        usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
 
-sh 'echo uname=$USERNAME pwd=$PASSWORD'
-println(env.USERNAME)
- } 
-   // echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
-
-    stage('Docker login') { 
+        def CI_USER_PASSWORD=sh(returnStdout: true, script: 'echo -n ${USERNAME}:${PASSWORD} | base64')
+      
+        println CI_USER_PASSWORD
+      
+        echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"$CI_USER_PASSWORD\"}}}" > /kaniko/.docker/config.json
+      }
+   
       container('kaniko') {
         sh '/kaniko/executor --context . --destination=sergeyglad/wiki:5.0'
       }
