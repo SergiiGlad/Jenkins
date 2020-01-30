@@ -21,7 +21,7 @@ node{
       echo \${i}:$params.CONFIGURATION
     done
   """
-  withEnv(["CONFIGURATION=$params.BUILD_CONFIGURATION"]) {
+  withEnv(["CONFIGURATION=$params.CONFIGURATION"]) {
     sh(libraryResource('list-dir.sh'))
   }  
 
