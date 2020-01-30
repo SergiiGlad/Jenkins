@@ -38,7 +38,7 @@ kanikoTemplate(podLabel) {
       container('kaniko') {
         sh 'ls'  
         sh 'cat config.json' 
-        sh '/kaniko/executor --context . --destination=sergeyglad/wiki:5.0'
+        sh '/kaniko/executor --context . --destination=sergeyglad/wiki:6.0'
       }
     }  
     
