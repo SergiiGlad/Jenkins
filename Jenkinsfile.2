@@ -20,6 +20,9 @@ kanikoTemplate(podLabel) {
 
     sh 'echo -n password | base64'
     println credentials( 'docker-api-key' )
+     docker.withRegistry( '', registryCredential ) {
+        sh 'echo docker; ls'
+      }
    // echo "{\"auths\":{\"$CI_REGISTRY\":{\"auth\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
 
     stage('Docker login') { 
