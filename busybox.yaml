@@ -12,6 +12,7 @@ spec:
     volumeMounts:
       - name: docker-config
         mountPath: /kaniko/.docker
+     
   volumes:
   - name: docker-config
     projected:
@@ -21,4 +22,7 @@ spec:
           items:
             - key: .dockerconfigjson
               path: config.json 
+  - name: config-map
+    configMap:
+      name: proper             
  

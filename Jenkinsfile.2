@@ -23,8 +23,8 @@ node{
   """
   withEnv(["CONFIGURATION=$params.CONFIGURATION"]) {
     sh(libraryResource('list-dir.sh'))
-    def list=sh(returnStdout: true, script: libraryResource('list-dir.sh'))
-    println list
   }  
+
+  println fileList()
 
 }

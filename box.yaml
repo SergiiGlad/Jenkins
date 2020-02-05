@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: box
+spec:
+  restartPolicy: Never
+  containers:
+  - name: busybox
+    image: busybox
+    command: ['cat']
+    tty: true
+    volumeMounts:
+      - name: config-map
+        mountPath: /etc/newvolume 
+    volumeMounts:
+      - name: spec-config
+        mountPath: /etc/config   
+    env:
+      - name: GAME
+        valueFrom:
+          configMapKeyRef:
+            name: game-cm    
+            key: game
+  
+  volumes:
+  - name: config-map
+    configMap:
+      name: proper 
+  - name:  spec-config
+    configMap:
+      name: spec-config       
+       
+ 
