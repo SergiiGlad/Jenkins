@@ -1,0 +1,30 @@
+#!groovy
+
+library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
+
+properties([
+  parameters([
+    string(name: 'REPOSITORY', defaultValue: 'edyablo/demo-dotnet'), 
+    choice(name: 'CONFIGURATION', defaultValue: 'Debug', choices: ['Debug', 'Release' ])
+  ])
+])
+
+node{
+
+  git credentialsId: 'github_git',
+    url: 'https://github.com/sergiiglad/web-delivery.git'
+
+  sh"""
+    pr=[1,2,3,4]
+    for i in \$pr
+    do
+      echo \${i}:$params.CONFIGURATION
+    done
+  """
+  withEnv(["CONFIGURATION=$params.CONFIGURATION"]) {
+    sh(libraryResource('list-dir.sh'))
+  }  
+
+  println fileList('.')
+
+}
