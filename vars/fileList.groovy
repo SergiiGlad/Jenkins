@@ -1,5 +1,7 @@
-def call(){
+def call(String path){
 
-return sh(returnStdout: true, script: libraryResource('list-dir.sh'))
+def listPath=sh(returnStdout: true, script: "find $path -name *.yaml")
+
+return listPath
    
 }
