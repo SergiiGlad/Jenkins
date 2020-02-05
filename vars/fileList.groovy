@@ -5,7 +5,8 @@ def findList=sh(returnStdout: true, script: "find $path -name *.yaml")
 def filePathList = []
 
 findList.each {
-   filePathList.add( it.substring( path.length()+1) )
+   println it.substring(2)
+   filePathList.add( it.substring( 2 ) )
 }
 return filePathList
    
