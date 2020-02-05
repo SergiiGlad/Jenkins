@@ -1,7 +1,12 @@
 def call(String path){
 
-def listPath=sh(returnStdout: true, script: "find $path -name *.yaml")
+def findList=sh(returnStdout: true, script: "find $path -name *.yaml")
 
-return listPath
+def filePathList = []
+
+findList.each {
+   filePathList.add( it.substring( path.length()+1) )
+}
+return filePathList
    
 }
