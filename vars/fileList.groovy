@@ -1,5 +1,5 @@
 def call(){
 
-   return sh(libraryResource('list-dir.sh'))
-
+return sh(returnStdout: true, script: libraryResource('list-dir.sh'))
+   
 }
