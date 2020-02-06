@@ -7,7 +7,7 @@ node{
   git credentialsId: 'github_git',
     url: 'https://github.com/sergiiglad/web-delivery.git'
 
-  def sun = library('my-shared-library').com.sun.SunDeploy  
+  def sun = library('my-shared-library@master').com.sun.SunDeploy  
 
   def yamlFilePathList = fileList('.')
 
