@@ -1,7 +1,8 @@
 #!groovy
 
 library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
-library('my-shared-library@master').com.sun.SunDeploy
+
+def lib = library('my-shared-library@master').com.sun
 
 node{
 
@@ -12,10 +13,10 @@ node{
 
   if ( yamlFilePathList ) println yamlFilePathList
 
-  List<SunDeploy> stages = [] 
+  List<lib.SunDeploy> stages = [] 
 
   yamlFilePathList.each {
-      stages.add( new SunDeploy( it ) )
+      stages.add( new lib.SunDeploy( it ) )
   }
 
   stages.each() {
