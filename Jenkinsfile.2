@@ -1,8 +1,8 @@
 #!groovy
 
-library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
+library identifier: 'my-shared-library', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
 
-def sun = library('my-shared-library@master').com.sun.SunDeploy
+def sun = library('my-shared-library').com.sun.SunDeploy
 
 node{
 
