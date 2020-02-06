@@ -1,8 +1,8 @@
 #!groovy
-import com.sun.SunDeploy
+
 
 library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
-
+import com.sun.SunDeploy
 
 node{
 
