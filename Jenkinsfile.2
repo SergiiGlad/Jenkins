@@ -2,7 +2,7 @@
 
 library 'my-shared-library'
 
-def sun = @library('my-shared-library').com.sun.SunDeploy
+def Sun = load "com.sun.SunDeploy"
 
 node{
 
@@ -16,7 +16,7 @@ node{
   List stages = [] 
 
   yamlFilePathList.each {
-      stages.add( sun.new( it ) )
+      stages.add( Sun.new( it ) )
   }
 
   stages.each() {
