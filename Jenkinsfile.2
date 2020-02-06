@@ -1,6 +1,6 @@
 #!groovy
 
-library 'my-shared-library'
+library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
 
 def Sun = load "src/com/sun/SunDeploy.groovy"
 
