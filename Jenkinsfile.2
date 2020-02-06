@@ -2,7 +2,7 @@
 
 library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
 
-def lib = library('my-shared-library@master').com.sun
+def sun = library('my-shared-library@master').com.sun.SunDeploy
 
 node{
 
@@ -13,10 +13,10 @@ node{
 
   if ( yamlFilePathList ) println yamlFilePathList
 
-  List<lib.SunDeploy> stages = [] 
+  List<sun> stages = [] 
 
   yamlFilePathList.each {
-      stages.add( new lib.SunDeploy( it ) )
+      stages.add( sun.new( it ) )
   }
 
   stages.each() {
