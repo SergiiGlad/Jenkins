@@ -2,12 +2,23 @@
 
 library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
 
-
 node{
 
   git credentialsId: 'github_git',
     url: 'https://github.com/sergiiglad/web-delivery.git'
 
-  println fileList('.')
+  def yamlFilePathList = fileList('.')
+
+  if ( yamlFilePathList ) println yamlFilePathList
+
+  List<SunDeploy> stages = [] 
+
+  yamlFilePathList.each {
+      stages.add( new SunDeploy( it ) )
+  }
+
+  stages.each() {
+    it.print()
+  }
 
 }
