@@ -14,3 +14,4 @@ class SunDeploy {
         "\nhelm_release_name: "+this.releaseName)
     }
 }
+
