@@ -12,14 +12,14 @@ node{
 
   if ( yamlFilePathList ) println yamlFilePathList
 
-  List<SunDeploy> stages = [] 
+  List<String> stages = [] 
 
   yamlFilePathList.each {
-      stages.add( new SunDeploy( it ) )
+      stages.add( it  )
   }
 
   stages.each() {
-    it.print()
+    print it
   }
 
 }
