@@ -16,7 +16,7 @@ class SunStage extends SunDeploy {
     }
     
     def deployStage() {
-        if ( super.dockerTag ) helmDeploy()
+        if ( dockerTag ) helmDeploy()
     }
     
     def helmDeploy() {
