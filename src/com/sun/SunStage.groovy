@@ -1,3 +1,5 @@
+package com.sun
+
 class SunStage extends SunDeploy {
     String stageName
 
