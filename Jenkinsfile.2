@@ -23,8 +23,6 @@ properties([
     // find list yaml files
     def yamlFilePathList = fileList('.')
 
-    yamlFilePathList = ['develop/dev-web.yaml','qa/qa-web.yaml'] + yamlFilePathList
-
     if ( yamlFilePathList ) println yamlFilePathList
 
     // List<SunStage>
@@ -38,17 +36,26 @@ properties([
       it.print()
     }
 
-    // Check changeSet prod release
-    def prodList = changeSetFiles()
+    def prodList= []
 
+    // Check changeSet prod release
+    prodList = changeSetFiles()
+
+    if ( isShortCommit(params.dockerTag) ) prodList.add( 'develop/dev-web.yaml' )
+
+    if ( isBuildingTag(params.dockerTag) ) prodList.add( 'qa/qa-web.yaml' )
+
+    // mock
     prodList=["prod-us1/web-prod-us1.yaml","prod-us2/web-prod-us2.yaml","develop/dev-web.yaml"] 
 
-    if ( prodList) println prodList
+    if ( prodList ) println prodList
 
     stages.each { stage -> 
       prodList.each { prod -> 
-          if ( stage.stageName == prod ) {
-              stage.initDeploy( prod )
+          if ( stage.stageName == prod ) 
+            if ( prod == 'develop/dev-web.yaml' || prod == 'qa/qa-web.yaml' )
+              stage.setDockerTag( params.dockerTag ) 
+            stage.initDeploy( prod )
           }    
       }
     }
@@ -56,8 +63,5 @@ properties([
     stages.each{
         it.deployStage()
     }
-
-    
-
   }
 //}  
