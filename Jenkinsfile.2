@@ -39,6 +39,8 @@ properties([
     // Check changeSet prod release
     def prodList = changeSetFiles()
 
+    prodList=["prod-us1/web-prod-us1.yaml","prod-us2/web-prod-us2.yaml","develop/dev-web.yaml"] 
+
     if ( prodList) println prodList
 
     stages.each { stage -> 
