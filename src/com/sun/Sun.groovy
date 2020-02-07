@@ -17,7 +17,7 @@ class Sun {
     }
     
     static String getTagFromYaml(){
-        def values = readYaml 'file': stageName
+        def values = readYaml(file: stageName)
         dockerTag = values.image.tag
     }
 
