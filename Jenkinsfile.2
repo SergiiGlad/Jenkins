@@ -4,6 +4,8 @@ library identifier: 'my-shared-library@master', retriever: modernSCM(github(repo
 
 node{
 
+  sh 'ls -la'
+
   git credentialsId: 'github_git',
     url: 'https://github.com/sergiiglad/web-delivery.git'
 
