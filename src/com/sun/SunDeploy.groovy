@@ -4,7 +4,7 @@ class SunDeploy {
     String nameSpace
     String releaseName
     
-    SunDeploy(String yamFilePath) {
+    SunDeploy(String yamlFilePath) {
         this.nameSpace = yamlFilePath.split('/')[0]
         this.releaseName = yamlFilePath.split('/')[1].split(/\./)[0]
     }
