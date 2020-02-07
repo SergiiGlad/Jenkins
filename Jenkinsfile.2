@@ -56,7 +56,7 @@ properties([
             if ( prod == 'develop/dev-web.yaml' || prod == 'qa/qa-web.yaml' )
               stage.setDockerTag( params.dockerTag ) 
             stage.initDeploy( prod )
-          }    
+             
       }
     }
 
