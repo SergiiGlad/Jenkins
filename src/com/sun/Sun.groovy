@@ -17,8 +17,8 @@ class Sun {
     }
     
     String getTagFromYaml(){
-        def values = readYaml(file: stageName)
-        dockerTag = values.image.tag
+        def values = 
+        dockerTag = values
     }
 
      Sun(String yamlFilePath) {
@@ -30,7 +30,6 @@ class Sun {
         nameSpace = getDirName( yamlFilePath )
         releaseName = getReleaseName( yamlFilePath )
         
-        initTag()
     }
 
     def setDockerTag(String tag) {
