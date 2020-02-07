@@ -17,8 +17,8 @@ properties([
       url: 'https://github.com/sergiiglad/web-delivery.git'
     
     // get classes from share library
-    def SunDeploy = lib.com.sun.SunDeploy
-    def SunStage = lib.com.sun.SunStage
+    def Sun = lib.com.sun.Sun
+   
 
     // find list yaml files
     def yamlFilePathList = fileList('.')
@@ -29,7 +29,7 @@ properties([
     List stages = [] 
 
     yamlFilePathList.each {
-        stages.add( SunStage.new( it ) )
+        stages.add( Sun.new( it ) )
     }
 
     stages.each {
@@ -44,7 +44,7 @@ properties([
     stages.each { stage -> 
       prodList.each { prod -> 
           if ( stage.stageName == prod ) {
-              stage.initSunDeploy( prod )
+              stage.initDeploy( prod )
           }    
       }
     }

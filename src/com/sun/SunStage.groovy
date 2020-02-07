@@ -1,25 +1,5 @@
 package com.sun
 
-class SunStage extends SunDeploy {
-    String stageName
-
-
-    SunStage(String yamlFilePath) {
-       
-       stageName = yamlFilePath
-    } 
+class SunStage extends Sun{
     
-    def print() {
-        println stageName
-        super.print()
-        println()
-    }
-    
-    def deployStage() {
-        if ( dockerTag ) helmDeploy()
-    }
-    
-    def helmDeploy() {
-        print()
-    }
 }
