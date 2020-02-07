@@ -8,7 +8,6 @@ node{
     url: 'https://github.com/sergiiglad/web-delivery.git'
 
   def Sun = lib.com.sun.SunDeploy
-  def sun = Sun.new("string/string.txt") 
 
   def yamlFilePathList = fileList('.')
 
@@ -16,14 +15,12 @@ node{
 
   List stages = [] 
 
-  println sun
-
-  yamlFilePathList.each {
-      stages.add( it )
+   yamlFilePathList.each {
+      stages.add( Sun.new( it ) )
   }
 
   stages.each() {
-    print( it )
+    it.print()
   }
 
 }
