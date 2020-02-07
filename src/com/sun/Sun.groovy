@@ -16,31 +16,20 @@ class Sun {
         return yamlFilePath.split('/')[1].split(/\./)[0]
     }
     
-    String getTagFromYaml(){
-        def values = 
-        dockerTag = values
-    }
 
      Sun(String yamlFilePath) {
         stageName = yamlFilePath
     } 
     
-    def initDeploy(String yamlFilePath) {
+    def initDeploy(String yamlFilePath, String tag) {
         
         nameSpace = getDirName( yamlFilePath )
         releaseName = getReleaseName( yamlFilePath )
+        dockerTag = tag
         
     }
+    
 
-    def setDockerTag(String tag) {
-        dockerTag = tag
-    }
-    
-    def initTag() {
-        if ( nameSpace != 'develop' || nameSpace == 'qa' ) 
-            dockerTag = getTagFromYaml()
-    }
-    
     def print() {
         println(stageName)
         println("k8s_namespace: "+this.nameSpace+

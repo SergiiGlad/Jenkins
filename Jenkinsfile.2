@@ -54,10 +54,11 @@ properties([
       prodList.each { prod -> 
           if ( stage.stageName == prod ) 
             if ( prod == 'develop/dev-web.yaml' || prod == 'qa/qa-web.yaml' )
-              stage.setDockerTag( params.dockerTag ) 
+              stage.initDeploy( prod, params.dockerTag ) 
             else
-              stage.setDockerTag( readYaml(file: stageName).image.tag )
-            initDeploy( prod )  
+              stage.initDeploy( prod, readYaml(file: stageName).image.tag )
+            
+          
       }
     }
 
