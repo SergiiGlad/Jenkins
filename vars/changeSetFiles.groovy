@@ -1,4 +1,4 @@
-def changeSetFiles() {
+def call() {
   def listFilePath = []
   currentBuild.changeSets.each { changeSet ->
     changeSet.items.each { entry ->
