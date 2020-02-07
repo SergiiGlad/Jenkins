@@ -23,6 +23,8 @@ properties([
     // find list yaml files
     def yamlFilePathList = fileList('.')
 
+    yamlFilePathList = ['develop/dev-web.yaml','qa/qa-web.yaml'] + yamlFilePathList
+
     if ( yamlFilePathList ) println yamlFilePathList
 
     // List<SunStage>
