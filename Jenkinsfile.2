@@ -2,25 +2,58 @@
 
 def lib = library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
 
-node{
+def podLabel = "jenkins-worker-${UUID.randomUUID().toString()}"
 
-  git credentialsId: 'github_git',
-    url: 'https://github.com/sergiiglad/web-delivery.git'
+properties([
+  parameters([
+    string(name: 'dockerTag', defaultValue: '', description: 'git tag or short commit from upstream build' )
+  ])
+])
 
-  def Sun = lib.com.sun.SunDeploy
+//helmTemplate(podLabel) {
+  node(podLabel){
 
-  def yamlFilePathList = fileList('.')
+    git credentialsId: 'github_git',
+      url: 'https://github.com/sergiiglad/web-delivery.git'
+    
+    // get classes from share library
+    def SunDeploy = lib.com.sun.SunDeploy
+    def SunStage = lib.com.sun.SunStage
 
-  if ( yamlFilePathList ) println yamlFilePathList
+    // find list yaml files
+    def yamlFilePathList = fileList('.')
 
-  List stages = [] 
+    if ( yamlFilePathList ) println yamlFilePathList
 
-   yamlFilePathList.each {
-      stages.add( Sun.new( it ) )
+    // List<SunStage>
+    List stages = [] 
+
+    yamlFilePathList.each {
+        stages.add( SunStage.new( it ) )
+    }
+
+    stages.each {
+      it.print()
+    }
+
+    // Check changeSet prod release
+    def prodList = changeSetFiles()
+
+    if ( prodList) println prodList
+
+    stages.each { stage -> 
+      prodList.each { prod -> 
+          if ( stage.stageName == prod ) {
+              stage.initSunDeploy( prod )
+          }    
+      }
+    }
+
+    stages.each{
+        it.deployStage()
+    }
+
+    
+
   }
-
-  stages.each() {
-    it.print()
-  }
-
-}
+//}  
