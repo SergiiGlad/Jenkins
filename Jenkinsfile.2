@@ -7,7 +7,10 @@ node{
   git credentialsId: 'github_git',
     url: 'https://github.com/sergiiglad/web-delivery.git'
 
-  def sun = library('my-shared-library@master').com.sun
+  //def sun = library('my-shared-library@master').com.sun
+
+  sh 'ls -la'
+  // @my-shared-library@master
 
   def yamlFilePathList = fileList('.')
 
@@ -16,11 +19,11 @@ node{
   List stages = [] 
 
   yamlFilePathList.each {
-      stages.add( sun.new( it ) )
+      stages.add( it )
   }
 
   stages.each() {
-    it.print()
+    print( it )
   }
 
 }
