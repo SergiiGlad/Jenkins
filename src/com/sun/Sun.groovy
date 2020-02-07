@@ -16,7 +16,7 @@ class Sun {
         return yamlFilePath.split('/')[1].split(/\./)[0]
     }
     
-    static String getTagFromYaml(){
+    String getTagFromYaml(){
         def values = readYaml(file: stageName)
         dockerTag = values.image.tag
     }
