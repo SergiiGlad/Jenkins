@@ -56,7 +56,7 @@ properties([
             if ( prod == 'develop/dev-web.yaml' || prod == 'qa/qa-web.yaml' )
               stage.initDeploy( prod, params.dockerTag ) 
             else
-              stage.initDeploy( prod, readYaml(file: stageName).image.tag )
+              stage.initDeploy( prod, readYaml(file: prod).image.tag )
             
           
       }
