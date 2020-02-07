@@ -50,6 +50,7 @@ class Sun {
     }
     
     def deployStage() {
+        println "dockerTag: $dockerTag"
         if ( dockerTag ) helmDeploy()
     }
     
