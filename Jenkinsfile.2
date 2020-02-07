@@ -11,7 +11,7 @@ properties([
 ])
 
 //helmTemplate(podLabel) {
-  node(podLabel){
+  node{
 
     git credentialsId: 'github_git',
       url: 'https://github.com/sergiiglad/web-delivery.git'
