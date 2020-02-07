@@ -62,8 +62,10 @@ properties([
       }
     }
 
-    println("println")
-    stages.each{
+    
+    stages.each {
+        println("println")
+        println it
         it.deployStage()
     }
   }
