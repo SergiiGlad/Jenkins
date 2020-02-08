@@ -2,7 +2,7 @@
 
 def lib = library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
 
-import com.sun.*
+@Library( lib ) import com.sun.*
 
 def podLabel = "jenkins-worker-${UUID.randomUUID().toString()}"
 
@@ -30,7 +30,7 @@ properties([
     List stages = [] 
 
     yamlFilePathList.each {
-        stages.add( lib.com.sun.Sun.new( it ) )
+        stages.add( Sun.new( it ) )
     }
 
     stages.each {
