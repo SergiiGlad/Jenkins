@@ -26,7 +26,7 @@ class Sun {
         nameSpace = getDirName( yamlFilePath )
         releaseName = getReleaseName( yamlFilePath )
         dockerTag = tag
-        readYaml(file: prod).image.tag
+        readYaml(file: stageName).image.tag
         
     }
     
