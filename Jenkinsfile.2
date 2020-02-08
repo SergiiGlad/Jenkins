@@ -17,7 +17,7 @@ properties([
       url: 'https://github.com/sergiiglad/web-delivery.git'
     
     // get classes from share library
-    def sun = lib.com.sun
+    def sun = lib.com.sun.Sun.new(this)
 
     // find list yaml files
     def yamlFilePathList = fileList('.')
@@ -28,7 +28,7 @@ properties([
     List stages = [] 
 
     yamlFilePathList.each {
-        stages.add( sun.Sun.new( it ) )
+        stages.add( sun.new( it ) )
     }
 
     stages.each {
@@ -60,7 +60,6 @@ properties([
           
       }
     }
-
     
     stages.each {
         println("println")
