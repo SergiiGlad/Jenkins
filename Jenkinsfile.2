@@ -30,7 +30,7 @@ properties([
     List stages = [] 
 
     yamlFilePathList.each {
-        stages.add( Sun.new( it ) )
+        stages.add( lib.com.sun.Sun.new( it ) )
     }
 
     stages.each {
