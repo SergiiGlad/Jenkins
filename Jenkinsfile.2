@@ -2,8 +2,6 @@
 
 def lib = library identifier: 'my-shared-library@master', retriever: modernSCM(github(repository: 'Jenkins', repoOwner: 'SergiiGlad'))
 
-@Library( 'my-shared-library' ) import com.sun.*
-
 def podLabel = "jenkins-worker-${UUID.randomUUID().toString()}"
 
 properties([
@@ -19,7 +17,7 @@ properties([
       url: 'https://github.com/sergiiglad/web-delivery.git'
     
     // get classes from share library
-    def Sun = lib.com.sun.Sun
+    def SunClass = lib.com.sun.Sun
 
     // find list yaml files
     def yamlFilePathList = fileList('.')
@@ -30,7 +28,7 @@ properties([
     List stages = [] 
 
     yamlFilePathList.each {
-        stages.add( Sun.new( it ) )
+        stages.add( SunClass.new( it ) )
     }
 
     stages.each {
