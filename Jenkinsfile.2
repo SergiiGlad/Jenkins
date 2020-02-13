@@ -1,6 +1,4 @@
 #!groovy
-import hudson.model.*
-System.out = getBinding().out;
 
 class Sun {   
 
@@ -49,7 +47,7 @@ class Sun {
     }
 
      String getStageName() {
-        System.out.println(stageName)
+        out.println(stageName)
         return stageName
     }
 }
