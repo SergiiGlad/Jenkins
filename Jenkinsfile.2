@@ -1,14 +1,6 @@
 #!groovy
 
-
-
-
-def podLabel = "jenkins-worker-${UUID.randomUUID().toString()}"
-
-//helmTemplate(podLabel) {
-  node{
-
-    class Sun {   
+class Sun {   
 
     String stageName
     String nameSpace
@@ -55,11 +47,20 @@ def podLabel = "jenkins-worker-${UUID.randomUUID().toString()}"
     }
 
      String getStageName() {
-        println stageName
+        sh "echo $stageName"
+       //
         return stageName
     }
 }
 
+
+
+def podLabel = "jenkins-worker-${UUID.randomUUID().toString()}"
+
+//helmTemplate(podLabel) {
+  node{
+
+    
    
     def yamlFilePathList = ["first","second"]
 
