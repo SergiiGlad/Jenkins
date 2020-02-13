@@ -31,14 +31,13 @@ class Sun1 {
     
 
     def print() {
-        println(stageName)
-        println("k8s_namespace: "+this.nameSpace+
+        return stageName+
+        "\nk8s_namespace: "+this.nameSpace+
         "\nhelm_release_name: "+this.releaseName+
-        "\ndockerTag: "+dockerTag)
+        "\ndockerTag: "+dockerTag
     }
     
     def deployStage() {
-        println("dockerTag: "+dockerTag)
         if ( dockerTag ) helmDeploy()
     }
     
