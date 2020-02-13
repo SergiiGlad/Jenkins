@@ -58,7 +58,7 @@ def podLabel = "jenkins-worker-${UUID.randomUUID().toString()}"
 
  
     // List<SunStage>
-    List stages = [] 
+    List<Sun> stages = [] 
 
     yamlFilePathList.each {
         stages.add( new Sun( it ) )
