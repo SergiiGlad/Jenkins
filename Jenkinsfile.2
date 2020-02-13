@@ -28,10 +28,9 @@ properties([
         stages.add( sunClassLoad( it ) )
     }
 
-    println(it.print().getClass())
-
     stages.each {
       it.print()
+      println(it.print().getClass())
     }
 
     def prodList= []
