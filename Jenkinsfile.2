@@ -54,8 +54,6 @@ properties([
               stage.initDeploy( prod, params.dockerTag ) 
             else
               stage.initDeploy( prod, readYaml(file: prod).image.tag )
-            
-          
       }
     }
     
