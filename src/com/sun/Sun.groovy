@@ -42,9 +42,6 @@ class Sun {
     }
     
     def helmDeploy() {
-        sh"""
-        echo "-------"
-        """
         print()
     }
 }

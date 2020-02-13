@@ -56,6 +56,8 @@ properties([
               stage.initDeploy( prod, readYaml(file: prod).image.tag )
       }
     }
+
+    output()
     
     stages.each {
         println("Deploy stage")
