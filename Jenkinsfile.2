@@ -65,7 +65,7 @@ def podLabel = "jenkins-worker-${UUID.randomUUID().toString()}"
     }
 
     stages.each {
-      it.print()
+      println it.stageName
       println(it.getClass())
     }
 
