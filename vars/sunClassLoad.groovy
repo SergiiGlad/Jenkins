@@ -3,6 +3,6 @@ def call(String str) {
 
     Sun example = new Sun( str )
     println("from sunClassLoad")
-    exmaple.print()
+    example.print()
     return example
 }
