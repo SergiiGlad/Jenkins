@@ -45,6 +45,10 @@ class Sun {
     def helmDeploy() {
         print()
     }
+
+     String getStageName() {
+        return stageName
+    }
 }
 
 
@@ -65,7 +69,7 @@ def podLabel = "jenkins-worker-${UUID.randomUUID().toString()}"
     }
 
     stages.each {
-      println it.stageName
+      println it.getStageName()
       println(it.getClass())
     }
 
