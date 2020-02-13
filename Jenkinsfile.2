@@ -1,5 +1,10 @@
 #!groovy
 
+import hudson.model.*
+
+// Get the out variable
+def out = getBinding().out
+
 class Sun {   
 
     String stageName
