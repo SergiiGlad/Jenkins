@@ -73,7 +73,7 @@ properties([
     List stages = [] 
 
     yamlFilePathList.each {
-        stages.add( sunClassLoad( it ) )
+        stages.add( new Sun( it ) )
     }
 
     stages.each {

@@ -1,6 +1,6 @@
 package com.sun
 
-class Sun {   
+class Sun1 {   
 
     String stageName
     String nameSpace
