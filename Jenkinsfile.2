@@ -60,6 +60,7 @@ properties([
     }
     
     stages.each {
+        println("Deploy stage")
         it.deployStage()
         
     }
