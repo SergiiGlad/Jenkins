@@ -1,10 +1,5 @@
 #!groovy
 
-
-
-// Get the out variable
-def out = getBinding().out
-
 class Sun {   
 
     String stageName
@@ -52,7 +47,7 @@ class Sun {
     }
 
      String getStageName() {
-        out.println(stageName)
+        dsl.echo stageName
         return stageName
     }
 }
