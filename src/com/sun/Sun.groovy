@@ -40,9 +40,8 @@ class Sun implements Serializable {
     def deployStage(script) {
         if ( dockerTag ) {
            
-                script{
-                    container('helm') {
-                        output()    
+                script.container('helm') {
+                        script.output()    
                     }
                 }
                 
