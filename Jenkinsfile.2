@@ -28,11 +28,6 @@ helmTemplate(podLabel) {
         stages.add( sunClassLoad(it) )
     }
 
-    stages.each {
-      println( it.print() )
-     
-    }
-
     def prodList= []
 
     // Check changeSet prod release
