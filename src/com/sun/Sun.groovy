@@ -39,7 +39,7 @@ class Sun {
     
     def deployStage(steps) {
         steps.node {
-            steps.sh 'hello steps'
+            steps.sh 'echo hello steps'
             if ( dockerTag ) helmDeploy()
         }
     }
