@@ -37,14 +37,13 @@ class Sun implements Serializable {
         "\ndockerTag: "+dockerTag
     }
     
-    def deployStage(steps) {
+    def deployStage(script, steps) {
         if ( dockerTag ) {
            
-               steps.script{ 
-                container('helm') {
-                withKubeConfig([credentialsId: 'kubeconfig']) {
-                        output()    
-                }
+                steps.container('helm') {
+                    script.withKubeConfig([credentialsId: 'kubeconfig']) {
+                        script.output()    
+                    }
                }    
        
             }    
