@@ -16,10 +16,8 @@ helmTemplate(podLabel) {
     git credentialsId: 'github_git',
       url: 'https://github.com/sergiiglad/web-delivery.git'
     
-    // find list yaml files
+    // list yaml pathFiles
     def yamlFilePathList = fileList('.')
-
-    if ( yamlFilePathList ) println yamlFilePathList
 
     // List<SunStage>
     List stages = [] 
@@ -28,20 +26,16 @@ helmTemplate(podLabel) {
         stages.add( sunClassLoad(it) )
     }
 
-    def prodList= []
+    // get filePath from changeSet 
+    def stagesList = changeSetFiles()
 
-    // Check changeSet prod release
-    prodList = changeSetFiles()
+    if ( isShortCommit(params.dockerTag) ) stagesList.add( 'develop/dev-web.yaml' )
 
-    if ( isShortCommit(params.dockerTag) ) prodList.add( 'develop/dev-web.yaml' )
+    if ( isBuildingTag(params.dockerTag) ) stagesList.add( 'qa/qa-web.yaml' )
 
-    if ( isBuildingTag(params.dockerTag) ) prodList.add( 'qa/qa-web.yaml' )
-
-    // mock
-    prodList=["prod-us1/web-prod-us1.yaml","prod-us2/web-prod-us2.yaml","develop/dev-web.yaml"] 
-
+    // init stage deploy for each Sun
     stages.each { stage -> 
-      prodList.each { prod -> 
+      stagesList.each { prod -> 
           if ( stage.stageName == prod ) 
             if ( prod == 'develop/dev-web.yaml' || prod == 'qa/qa-web.yaml' )
               stage.initDeploy( prod, params.dockerTag ) 
