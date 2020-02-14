@@ -41,9 +41,7 @@ class Sun implements Serializable {
         if ( dockerTag ) {
            
                 steps.container('helm') {
-                
-                        steps.sh 'helm ls'   
-                    
+                    steps.helmRelease(nameSpace,releaseName,stageName,dockerTag)
                }    
        
                
