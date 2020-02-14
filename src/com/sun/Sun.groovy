@@ -1,6 +1,6 @@
 package com.sun
 
-class Sun  {   
+class Sun implements Serializable {   
 
     String stageName
     String nameSpace
@@ -42,11 +42,7 @@ class Sun  {
         if ( dockerTag ) {
            
                 steps.container('helm') {
-                    steps.withKubeCredentials([
-                        [credentialsId: 'kubeconfig']
-                       
-                        ]) 
-                    {
+                    steps.withKubeConfig([credentialsId: '000']){
                         steps.sh 'helm ls'   
                     }
                 }
