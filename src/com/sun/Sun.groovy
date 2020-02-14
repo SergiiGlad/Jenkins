@@ -42,6 +42,7 @@ class Sun {
     }
     
     def helmDeploy() {
+        output()
         print()
     }
 }
