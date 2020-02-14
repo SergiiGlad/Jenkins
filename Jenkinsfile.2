@@ -45,13 +45,14 @@ helmTemplate(podLabel) {
           if ( stage.stageName == prod ) 
             if ( prod == 'develop/dev-web.yaml' || prod == 'qa/qa-web.yaml' )
               stage.initDeploy( prod, params.dockerTag ) 
-            else
-              stage.initDeploy( prod, readYaml(file: prod).image.tag )
+            else {
+              def tag = readYaml(file: prod).image.tag
+              if ( isExistsGitTags(tag) ) stage.initDeploy(prod, tag)
+            }
       }
     }
 
-    
-    
+        
     stages.each {
         println it.stageName
         it.deployHelmStage(this,steps)
