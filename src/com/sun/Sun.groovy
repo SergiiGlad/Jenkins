@@ -41,7 +41,7 @@ class Sun implements Serializable {
         if ( dockerTag ) {
             steps.container('helm') {  
                 steps.output()
-                }
+                
             }
         }
     }
