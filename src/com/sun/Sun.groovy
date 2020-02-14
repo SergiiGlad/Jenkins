@@ -42,7 +42,7 @@ class Sun {
     }
     
     def helmDeploy() {
-        output()
+        pipeline.output()
         print()
     }
 }
