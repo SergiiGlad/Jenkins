@@ -61,7 +61,7 @@ helmTemplate(podLabel) {
     
     stages.each {
         println it.stageName
-        it.deployStage(script,steps)
+        it.deployStage(this,steps)
         
     }
   }
