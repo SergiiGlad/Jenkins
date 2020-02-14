@@ -47,9 +47,7 @@ helmTemplate(podLabel) {
     }
        
     stages.each {
-        println it.stageName
         it.deployHelmStage(this,steps)
-        
     }
   }
 }  
