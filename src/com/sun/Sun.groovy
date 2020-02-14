@@ -1,6 +1,6 @@
 package com.sun
 
-class Sun implements Serializable {   
+class Sun  {   
 
     String stageName
     String nameSpace
