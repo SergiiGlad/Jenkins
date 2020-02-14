@@ -40,10 +40,12 @@ class Sun implements Serializable {
     def deployStage(script) {
         if ( dockerTag ) {
            
-               script.container('helm') {
+               script{ 
+                container('helm') {
                 withKubeConfig([credentialsId: 'kubeconfig']) {
                         output()    
-                }    
+                }
+               }    
        
             }    
             
