@@ -42,7 +42,7 @@ class Sun implements Serializable {
         if ( dockerTag ) {
            
                 steps.container('helm') {
-                    steps.withKubeConfig([credentialsId: '000']){
+                    steps.withKubeConfig([credentialsId: 'git_ssh']){
                         steps.sh 'helm ls'   
                     }
                 }
