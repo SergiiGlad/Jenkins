@@ -38,14 +38,25 @@ class Sun implements Serializable {
     }
     
     def deployStage(steps) {
-        steps.container('helm') {  
-            steps.sh 'echo hello steps'
-            if ( dockerTag ) helmDeploy()
+        if ( dockerTag ) {
+            steps.container('helm') {  
+                withKubeConfig([credentialsId: 'kubeconfig']) {
+                    sh """
+                        echo appVersion: $imageTag >> ${dockerTag}/wikiChart/Chart.yaml
+                        helm upgrade --dry-run --debug \
+                        --install $releaseName \
+                        --namespace $nameSpace \
+                        --force \
+                        --wait \
+                        --set-string image.tag=$dockerTag
+
+                        helm ls
+                    """
+                }
+            }
         }
     }
     
-    def helmDeploy() {
-        print()
-    }
+ 
 }
 
