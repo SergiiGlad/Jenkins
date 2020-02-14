@@ -60,8 +60,8 @@ helmTemplate(podLabel) {
     
     
     stages.each {
-        println("Deploy stage")
-        println it.deployStage(steps)
+        println it.stageName
+        it.deployStage(steps)
         
     }
   }
