@@ -46,7 +46,7 @@ class Sun implements Serializable {
                     }
                }    
        
-            }    
+               
             
         }
     }
