@@ -6,9 +6,7 @@ class Sun implements Serializable {
     String nameSpace
     String releaseName
     String dockerTag
-   
-
-    
+      
     static String getDirName(String yamlFilePath) {
         return yamlFilePath.split('/')[0]
     }
@@ -16,21 +14,18 @@ class Sun implements Serializable {
     static String getReleaseName(String yamlFilePath) {
         return yamlFilePath.split('/')[1].split(/\./)[0]
     }
-    
-
-     Sun(String yamlFilePath) {
+   
+    Sun(String yamlFilePath) {
         stageName = yamlFilePath
     } 
     
     def initDeploy(String yamlFilePath, String tag) {
-        
         nameSpace = getDirName( yamlFilePath )
         releaseName = getReleaseName( yamlFilePath )
         dockerTag = tag
         println("init Deploy")
     }
     
-
     def print() {
         return stageName+
         "\nk8s_namespace: "+this.nameSpace+
@@ -39,18 +34,20 @@ class Sun implements Serializable {
     }
     
     def deployHelmStage(script, steps) {
-        if ( dockerTag ) {
+        steps.stage("Deployment $stageName") {
+            if ( dockerTag ) {
 
-            script.checkoutGitApp( dockerTag )
+                script.checkoutGitApp( dockerTag )
 
-            steps.sh "ls $dockerTag"
-            
-            steps.container('helm') {
-                steps.withKubeConfig([credentialsId: 'kubeconfig']){
-                    script.helmRelease(nameSpace, releaseName, stageName, dockerTag)
+                steps.sh "ls $dockerTag"
+                
+                steps.container('helm') {
+                    steps.withKubeConfig([credentialsId: 'kubeconfig']){
+                        script.helmRelease(nameSpace, releaseName, stageName, dockerTag)
+                    }
                 }
             }
-        }
+        }   else  Utils.markStageSkippedForConditional("Deployment $stageName") 
     }
     
  

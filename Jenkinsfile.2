@@ -48,11 +48,10 @@ helmTemplate(podLabel) {
             else {
               def tag = readYaml(file: prod).image.tag
               if ( isExistsGitTags(tag) ) stage.initDeploy(prod, tag)
-            }
+          }
       }
     }
-
-        
+       
     stages.each {
         println it.stageName
         it.deployHelmStage(this,steps)
