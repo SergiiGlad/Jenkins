@@ -6,6 +6,7 @@ class Sun implements Serializable {
     String nameSpace
     String releaseName
     String dockerTag
+    String pole = "kubeconfig"
 
     
     static String getDirName(String yamlFilePath) {
@@ -42,7 +43,7 @@ class Sun implements Serializable {
            
                 steps.container('helm') {
                     steps.withKubeConfig([
-                        credentialsId: 'kubeconfig',
+                        credentialsId: pole,
                         ]) 
                     {
                         steps.sh 'helm ls'   
