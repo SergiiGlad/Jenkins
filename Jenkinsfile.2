@@ -61,7 +61,7 @@ properties([
     
     stages.each {
         println("Deploy stage")
-        println it.deployStage()
+        println it.deployStage(steps)
         
     }
   }

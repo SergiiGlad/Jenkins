@@ -37,12 +37,14 @@ class Sun {
         "\ndockerTag: "+dockerTag
     }
     
-    def deployStage() {
-        if ( dockerTag ) helmDeploy()
+    def deployStage(steps) {
+        steps.node {
+            steps.sh 'hello steps'
+            if ( dockerTag ) helmDeploy()
+        }
     }
     
     def helmDeploy() {
-        pipeline.output()
         print()
     }
 }
