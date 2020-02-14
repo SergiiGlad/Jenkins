@@ -1,4 +1,5 @@
 package com.sun
+import org.jenkinsci.plugins.pipeline.modeldefinition.Utils
 
 class Sun implements Serializable {   
 
@@ -46,8 +47,8 @@ class Sun implements Serializable {
                         script.helmRelease(nameSpace, releaseName, stageName, dockerTag)
                     }
                 }
-            }
-        }   else  Utils.markStageSkippedForConditional("Deployment $stageName") 
+            } else Utils.markStageSkippedForConditional("Deployment $stageName") 
+        }   
     }
     
  
