@@ -43,7 +43,7 @@ class Sun implements Serializable {
            
                 steps.container('helm') {
                     steps.withKubeCredentials([
-                        credentialsId: 'kubeconfig'
+                        [credentialsId: 'kubeconfig']
                        
                         ]) 
                     {
