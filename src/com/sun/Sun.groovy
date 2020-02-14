@@ -38,7 +38,7 @@ class Sun implements Serializable {
     }
     
     def deployStage(steps) {
-        steps.node {
+        steps.container('helm') {  
             steps.sh 'echo hello steps'
             if ( dockerTag ) helmDeploy()
         }
